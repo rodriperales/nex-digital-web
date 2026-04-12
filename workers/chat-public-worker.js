@@ -1,4 +1,4 @@
-const DEFAULT_ALLOWED_ORIGIN = "https://nexdigitalaiagency.pages.dev";
+const DEFAULT_ALLOWED_ORIGIN = "https://nex-digital-web.pages.dev";
 const MAX_MESSAGE_CHARS = 600;
 const MAX_REQUESTS_PER_MINUTE = 20;
 const MAX_TURNS_PER_SESSION = 20;
