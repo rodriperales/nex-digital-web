@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Blog | Nex Digital</title>
+<meta name="description" content="Biblioteca editorial de Nex Digital: webs para negocio, captacion, automatizacion util y decisiones comerciales con criterio."/>
+<meta name="robots" content="index,follow"/>
+<link rel="canonical" href="https://nexdigitalaiagency.pages.dev/blog/"/>
+<meta property="og:type" content="website"/>
+<meta property="og:locale" content="es_ES"/>
+<meta property="og:title" content="Blog | Nex Digital"/>
+<meta property="og:description" content="Articulos utiles para decidir mejor entre web, captacion y automatizacion util sin humo."/>
+<meta property="og:url" content="https://nexdigitalaiagency.pages.dev/blog/"/>
+<meta property="og:image" content="/social-preview.svg"/>
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:title" content="Blog | Nex Digital"/>
+<meta name="twitter:description" content="Biblioteca de contenido para negocio real: captacion, procesos y automatizacion util."/>
+<meta name="twitter:image" content="/social-preview.svg"/>
+<link rel="icon" type="image/svg+xml" href="/favicon.svg"/>
+<link rel="alternate" type="application/rss+xml" title="RSS Blog Nex Digital" href="/blog/rss.xml"/>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet"/>
+<link rel="stylesheet" href="/blog/blog.css"/>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Blog",
+  "name": "Blog Nex Digital",
+  "url": "https://nexdigitalaiagency.pages.dev/blog/",
+  "publisher": {
+    "@type": "Organization",
+    "name": "Nex Digital"
+  },
+  "inLanguage": "es"
+}
+</script>
+</head>
+<body>
+<header class="blog-topbar">
+  <div class="blog-shell blog-topbar-inner">
+    <a href="/" class="blog-logo"><span class="blog-logo-dot"></span>Nex Digital</a>
+    <nav class="blog-nav" aria-label="Navegacion principal">
+      <a href="/#servicios">Servicios</a>
+      <a href="/#portfolio">Portfolio</a>
+      <a href="/#faq">FAQ</a>
+      <a href="/blog/" aria-current="page">Blog</a>
+      <a href="/#contacto" class="blog-nav-cta">Contacto</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+  <section class="blog-section blog-hero">
+    <div class="blog-shell blog-hero-grid">
+      <div>
+        <div class="blog-eyebrow"><span class="blog-eyebrow-dot"></span>Biblioteca editorial</div>
+        <h1>Contenido util para decisiones de negocio, no solo para leer y pasar pagina</h1>
+        <p>Este blog esta pensado como base editorial de largo plazo: guias, comparativas y criterios practicos para mejorar captacion, ordenar procesos y aplicar automatizacion util cuando compensa.</p>
+        <div class="blog-hero-cta">
+          <a href="#explorar" class="btn btn-primary">Explorar articulos</a>
+          <a href="/#contacto" class="btn btn-ghost">Hablar sobre tu caso</a>
+        </div>
+      </div>
+      <aside class="blog-hero-panel">
+        <h2>Tambien sirve como base para contenido en redes</h2>
+        <ul>
+          <li>Cada articulo incluye ideas clave reutilizables.</li>
+          <li>Priorizamos piezas con mayor utilidad real para negocio.</li>
+          <li>Estructura preparada para extraer hooks y aprendizajes.</li>
+        </ul>
+        <div class="blog-social-links">
+          <a href="https://www.instagram.com/nexdigitalaiagency/" target="_blank" rel="noopener noreferrer">Instagram @nexdigitalaiagency</a>
+          <a href="https://www.tiktok.com/@nexdigitalaiagency" target="_blank" rel="noopener noreferrer">TikTok @nexdigitalaiagency</a>
+        </div>
+      </aside>
+    </div>
+  </section>
+
+  <section class="blog-section">
+    <div class="blog-shell">
+      <div class="blog-section-head">
+        <h2>Exploracion por categoria</h2>
+        <p>Filtra por tema para ir directo al tipo de decision que necesitas tomar ahora.</p>
+      </div>
+      <div class="blog-categories" id="blogCategories"></div>
+    </div>
+  </section>
+
+  <section class="blog-section">
+    <div class="blog-shell">
+      <div class="blog-section-head">
+        <h2>Post destacado</h2>
+        <p>Lectura prioritaria de la semana segun relevancia editorial y utilidad practica.</p>
+      </div>
+      <div id="featuredPost"></div>
+    </div>
+  </section>
+
+  <section class="blog-section" id="explorar">
+    <div class="blog-shell">
+      <div class="blog-section-head">
+        <h2>Buscador y filtros del blog</h2>
+        <p>Busca por titulo, resumen, categoria, palabras clave o conceptos del articulo.</p>
+      </div>
+
+      <div class="blog-search-wrap">
+        <label for="blogSearchInput">Buscar en el blog</label>
+        <div class="blog-search-controls">
+          <input id="blogSearchInput" type="search" placeholder="Ejemplo: landing, captacion, seguimiento de leads..." autocomplete="off"/>
+          <button id="blogSearchClear" type="button">Limpiar</button>
+        </div>
+        <p class="blog-search-help">Incluye busqueda por keywords y conceptos internos para facilitar descubrimiento.</p>
+      </div>
+
+      <p class="blog-total" id="blogTotalLabel">Cargando articulos...</p>
+      <div class="blog-filter-row" id="blogFilterRow"></div>
+      <div class="blog-grid" id="blogGrid"></div>
+      <div class="blog-empty-state" id="blogEmptyState" hidden>
+        No hay resultados con ese termino. Prueba otra categoria o accede al formulario principal para orientar tu caso.
+      </div>
+    </div>
+  </section>
+
+  <section class="blog-section">
+    <div class="blog-shell">
+      <div class="blog-section-head">
+        <h2>Mas relevantes ahora</h2>
+        <p>Seleccion editorial basada en relevancia y utilidad para negocio.</p>
+      </div>
+      <div class="blog-grid blog-grid-compact" id="blogRelevantGrid"></div>
+    </div>
+  </section>
+
+  <section class="blog-section">
+    <div class="blog-shell">
+      <div class="blog-section-head">
+        <h2>Ultimos publicados</h2>
+        <p>Publicaciones recientes para mantener la biblioteca viva y utilizable.</p>
+      </div>
+      <div class="blog-grid blog-grid-compact" id="blogRecentGrid"></div>
+    </div>
+  </section>
+
+  <section class="blog-section">
+    <div class="blog-shell">
+      <div class="blog-section-head">
+        <h2>Temas editoriales abiertos</h2>
+        <p>Base de categorias preparada para crecer con nuevas piezas sin perder orden.</p>
+      </div>
+      <div class="blog-topics" id="blogTopicsGrid"></div>
+
+      <div class="blog-final-cta">
+        <h2>Quieres aplicar esto en tu negocio con un plan claro?</h2>
+        <p>Podemos revisar tu contexto y priorizar entre web, captacion y automatizacion util sin soluciones infladas.</p>
+        <div class="blog-hero-cta">
+          <a href="/#contacto" class="btn btn-primary">Enviar formulario</a>
+          <a href="/#servicios" class="btn btn-ghost">Ver servicios</a>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="blog-footer">
+  <div class="blog-shell blog-footer-inner">
+    <span>© 2026 Nex Digital · Biblioteca editorial en construccion activa</span>
+    <div class="blog-footer-links">
+      <a href="/">Home</a>
+      <a href="/blog/redes-sociales/">Redes sociales</a>
+      <a href="/sitemap-blog.xml">Sitemap blog</a>
+      <a href="https://www.instagram.com/nexdigitalaiagency/" target="_blank" rel="noopener noreferrer">Instagram</a>
+      <a href="https://www.tiktok.com/@nexdigitalaiagency" target="_blank" rel="noopener noreferrer">TikTok</a>
+    </div>
+  </div>
+</footer>
+
+<script src="/blog/blog.js" defer></script>
+</body>
+</html>

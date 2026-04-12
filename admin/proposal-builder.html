@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<title>Proposal builder | Nex Digital</title>
+<meta name="robots" content="noindex,nofollow"/>
+<link rel="icon" type="image/svg+xml" href="/favicon.svg"/>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet"/>
+<style>
+*{box-sizing:border-box}
+body{margin:0;font-family:Inter,sans-serif;background:#F8FAFC;color:#0F172A}
+.wrap{max-width:1120px;margin:0 auto;padding:36px 20px 56px}
+.top{display:flex;justify-content:space-between;align-items:center;gap:1rem;flex-wrap:wrap;margin-bottom:18px}
+.brand{font-family:"Space Grotesk",sans-serif;font-weight:700;text-decoration:none;color:#0F172A}
+.back{font-size:.9rem;text-decoration:none;color:#4338CA}
+h1{font-family:"Space Grotesk",sans-serif;font-size:clamp(1.5rem,2.8vw,2rem);margin:.2rem 0 .55rem}
+p{color:#475569;line-height:1.66}
+.layout{display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-top:1rem}
+.card{background:#fff;border:1px solid rgba(15,23,42,.08);border-radius:14px;padding:1rem;box-shadow:0 10px 24px rgba(15,23,42,.05)}
+.card h2{margin:0 0 .7rem;font-family:"Space Grotesk",sans-serif;font-size:1rem}
+.grid{display:grid;gap:.7rem}
+label{font-size:.82rem;font-weight:600;color:#334155}
+input,select,textarea{width:100%;border:1px solid rgba(15,23,42,.14);border-radius:10px;padding:.68rem .75rem;font:inherit}
+textarea{min-height:100px;resize:vertical}
+.actions{display:flex;gap:.6rem;flex-wrap:wrap;margin-top:.8rem}
+button{border:none;border-radius:999px;padding:.62rem .95rem;font-weight:600;cursor:pointer}
+.btn-primary{background:linear-gradient(135deg,#4F46E5,#7C3AED);color:#fff}
+.btn-ghost{background:#EEF2FF;color:#4338CA;border:1px solid rgba(79,70,229,.18)}
+#proposalPreview{min-height:420px;white-space:pre-wrap;background:#F8FAFC;border:1px solid rgba(15,23,42,.08);border-radius:10px;padding:.8rem;font-size:.88rem;line-height:1.58}
+@media(max-width:980px){.layout{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+  <main class="wrap">
+    <div class="top">
+      <a class="brand" href="/admin/">Nex Digital · Admin</a>
+      <a class="back" href="/admin/">Volver al panel interno</a>
+    </div>
+    <h1>Generador de propuesta base</h1>
+    <p>Herramienta estática para construir una propuesta orientativa sin IA ni backend.</p>
+    <div class="layout">
+      <section class="card">
+        <h2>Datos de entrada</h2>
+        <div class="grid">
+          <div>
+            <label for="clientName">Nombre del cliente</label>
+            <input id="clientName" placeholder="Nombre y apellido"/>
+          </div>
+          <div>
+            <label for="companyName">Empresa</label>
+            <input id="companyName" placeholder="Nombre de empresa"/>
+          </div>
+          <div>
+            <label for="needType">Tipo de necesidad</label>
+            <input id="needType" placeholder="Ej. Captacion y orden de contacto"/>
+          </div>
+          <div>
+            <label for="objective">Objetivo principal</label>
+            <textarea id="objective" placeholder="Objetivo comercial detectado"></textarea>
+          </div>
+          <div>
+            <label for="serviceSelect">Oferta recomendada</label>
+            <select id="serviceSelect"></select>
+          </div>
+          <div>
+            <label for="scopeText">Alcance orientativo</label>
+            <textarea id="scopeText" placeholder="Fases o entregables orientativos"></textarea>
+          </div>
+          <div>
+            <label for="notesText">Observaciones</label>
+            <textarea id="notesText" placeholder="Notas adicionales para adaptar la propuesta"></textarea>
+          </div>
+        </div>
+        <div class="actions">
+          <button type="button" class="btn-ghost" id="loadExampleBtn">Cargar ejemplo</button>
+          <button type="button" class="btn-primary" id="generateBtn">Generar propuesta</button>
+          <button type="button" class="btn-primary" id="copyBtn">Copiar propuesta</button>
+        </div>
+      </section>
+      <section class="card">
+        <h2>Vista previa</h2>
+        <div id="proposalPreview"></div>
+      </section>
+    </div>
+  </main>
+
+  <script>
+  const serviceSelect=document.getElementById('serviceSelect');
+  const proposalPreview=document.getElementById('proposalPreview');
+  const clientName=document.getElementById('clientName');
+  const companyName=document.getElementById('companyName');
+  const needType=document.getElementById('needType');
+  const objective=document.getElementById('objective');
+  const scopeText=document.getElementById('scopeText');
+  const notesText=document.getElementById('notesText');
+  const loadExampleBtn=document.getElementById('loadExampleBtn');
+  const generateBtn=document.getElementById('generateBtn');
+  const copyBtn=document.getElementById('copyBtn');
+
+  let services=[];
+  let template='';
+
+  function listToBullets(items){
+    if(!Array.isArray(items)||!items.length) return '- Pendiente de definir';
+    return items.map(item=>'- '+item).join('\n');
+  }
+
+  function getSelectedService(){
+    const id=serviceSelect.value;
+    return services.find(s=>s.id===id)||services[0]||null;
+  }
+
+  function fillTemplate(rawTemplate,data){
+    return rawTemplate
+      .replaceAll('{{client_name}}',data.client_name)
+      .replaceAll('{{company}}',data.company)
+      .replaceAll('{{need_type}}',data.need_type)
+      .replaceAll('{{objective}}',data.objective)
+      .replaceAll('{{recommended_offer}}',data.recommended_offer)
+      .replaceAll('{{offer_summary}}',data.offer_summary)
+      .replaceAll('{{scope}}',data.scope)
+      .replaceAll('{{includes}}',data.includes)
+      .replaceAll('{{not_includes}}',data.not_includes)
+      .replaceAll('{{notes}}',data.notes);
+  }
+
+  function generateProposal(){
+    const service=getSelectedService();
+    if(!service||!template){
+      proposalPreview.textContent='No se pudieron cargar los datos base.';
+      return;
+    }
+    const payload={
+      client_name:clientName.value.trim()||'[Nombre cliente]',
+      company:companyName.value.trim()||'[Empresa]',
+      need_type:needType.value.trim()||'[Tipo de necesidad]',
+      objective:objective.value.trim()||'[Objetivo pendiente de completar]',
+      recommended_offer:service.name,
+      offer_summary:service.summary,
+      scope:scopeText.value.trim()||service.best_for,
+      includes:listToBullets(service.includes),
+      not_includes:listToBullets(service.not_includes),
+      notes:notesText.value.trim()||'Sin observaciones adicionales.'
+    };
+    proposalPreview.textContent=fillTemplate(template,payload);
+  }
+
+  function loadExample(){
+    clientName.value='María López';
+    companyName.value='Clínica Horizonte';
+    needType.value='Captación de solicitudes y orden de seguimiento';
+    objective.value='Aumentar solicitudes cualificadas y reducir tiempos de respuesta comercial.';
+    scopeText.value='Fase 1: base web y formulario de captación.\nFase 2: reglas de scoring y flujo de seguimiento inicial.';
+    notesText.value='Proyecto con prioridad alta para lanzamiento en las próximas semanas.';
+    if(services[0]) serviceSelect.value=services[0].id;
+    generateProposal();
+  }
+
+  copyBtn.addEventListener('click',async()=>{
+    const text=proposalPreview.textContent||'';
+    if(!text.trim()) return;
+    try{
+      await navigator.clipboard.writeText(text);
+      copyBtn.textContent='Copiado';
+      setTimeout(()=>{copyBtn.textContent='Copiar propuesta';},1200);
+    }catch(_){
+      alert('No se pudo copiar automáticamente. Puedes copiar el texto manualmente.');
+    }
+  });
+
+  generateBtn.addEventListener('click',generateProposal);
+  loadExampleBtn.addEventListener('click',loadExample);
+  serviceSelect.addEventListener('change',generateProposal);
+
+  Promise.all([
+    fetch('/data/services.json',{cache:'no-store'}).then(r=>r.json()),
+    fetch('/data/proposal-template.md',{cache:'no-store'}).then(r=>r.text())
+  ]).then(([servicesData,templateText])=>{
+    services=Array.isArray(servicesData)?servicesData:[];
+    template=templateText||'';
+    serviceSelect.innerHTML=services.map(s=>'<option value="'+s.id+'">'+s.name+'</option>').join('');
+    loadExample();
+  }).catch(()=>{
+    proposalPreview.textContent='No se pudieron cargar /data/services.json o /data/proposal-template.md';
+  });
+  </script>
+</body>
+</html>

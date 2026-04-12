@@ -1,0 +1,86 @@
+[
+  {
+    "id": "servicio-exacto",
+    "question": "¿Qué tipo de servicio ofrecéis exactamente?",
+    "answer": "El enfoque principal combina base web, captación y organización del contacto comercial. La automatización se aplica cuando mejora procesos concretos con impacto real.",
+    "category": "servicios",
+    "keywords": ["servicio", "oferta", "web", "captación", "automatización"]
+  },
+  {
+    "id": "ambito-nacional",
+    "question": "¿Trabajáis con clientes de toda España?",
+    "answer": "Sí. El servicio está diseñado para operar en remoto con negocios de toda España, con metodología de trabajo por fases y seguimiento claro.",
+    "category": "operativa",
+    "keywords": ["españa", "nacional", "remoto", "clientes", "ámbito"]
+  },
+  {
+    "id": "web-vs-automatizacion",
+    "question": "¿Qué diferencia hay entre una web y una automatización?",
+    "answer": "La web estructura tu propuesta y la captación. La automatización ordena tareas repetitivas de contacto y seguimiento. Son capas complementarias con funciones distintas.",
+    "category": "automatizacion",
+    "keywords": ["diferencia", "web", "automatización", "proceso", "seguimiento"]
+  },
+  {
+    "id": "solo-landing",
+    "question": "¿Puedo contratar solo una landing?",
+    "answer": "Sí. Si el objetivo comercial está bien definido, una landing puede ser una opción eficiente para validar captación sin desplegar una web completa.",
+    "category": "servicios",
+    "keywords": ["landing", "contratar", "captación", "validación", "servicio"]
+  },
+  {
+    "id": "material-inicial",
+    "question": "¿Qué necesito aportar para empezar?",
+    "answer": "Información del negocio, servicio principal, cliente objetivo y objetivo comercial. Con esa base se prepara una propuesta orientativa y el alcance inicial.",
+    "category": "inicio",
+    "keywords": ["inicio", "briefing", "información", "negocio", "objetivo"]
+  },
+  {
+    "id": "duracion-proyecto",
+    "question": "¿Cuánto suele durar un proyecto?",
+    "answer": "Depende del alcance y los tiempos de revisión. La planificación se define por fases para mantener control sobre entregables y calendario.",
+    "category": "proceso",
+    "keywords": ["plazo", "duración", "calendario", "fases", "entrega"]
+  },
+  {
+    "id": "automatizacion-futura",
+    "question": "¿Se pueden añadir automatizaciones más adelante?",
+    "answer": "Sí. Es habitual consolidar primero la base web y de captación, y añadir automatización en una fase posterior con objetivos y alcance definidos.",
+    "category": "automatizacion",
+    "keywords": ["más adelante", "fase", "automatizaciones", "escalado", "evolución"]
+  },
+  {
+    "id": "entrega-estandar",
+    "question": "¿Qué incluye una entrega estándar?",
+    "answer": "Incluye diseño responsive, estructura clara, formulario integrado, revisión básica y preparación para publicación según el alcance acordado.",
+    "category": "entrega",
+    "keywords": ["entrega", "incluye", "responsive", "formulario", "publicación"]
+  },
+  {
+    "id": "post-formulario",
+    "question": "¿Cómo se trabaja después de enviar el formulario?",
+    "answer": "Se realiza una revisión inicial, se responde por email con propuesta orientativa y se define alcance antes de ejecutar.",
+    "category": "proceso",
+    "keywords": ["formulario", "respuesta", "propuesta", "alcance", "siguiente paso"]
+  },
+  {
+    "id": "precios-orientativos",
+    "question": "¿Los precios son cerrados o orientativos?",
+    "answer": "Son orientativos. El importe final se ajusta al alcance real del proyecto y se valida en la propuesta.",
+    "category": "precios",
+    "keywords": ["precios", "orientativos", "cerrados", "presupuesto", "alcance"]
+  },
+  {
+    "id": "inicio-pequeno",
+    "question": "¿Puedo empezar por algo pequeño?",
+    "answer": "Sí. Se puede comenzar por una base más acotada y evolucionar por fases según resultados y prioridades del negocio.",
+    "category": "servicios",
+    "keywords": ["empezar", "pequeño", "fase", "acotado", "evolucionar"]
+  },
+  {
+    "id": "web-existente",
+    "question": "¿Trabajáis con negocios que ya tienen una web?",
+    "answer": "Sí. Podemos optimizar estructura, captación y flujo de contacto partiendo de una web existente, sin necesidad de rehacer todo desde cero.",
+    "category": "servicios",
+    "keywords": ["web existente", "optimizar", "mejora", "captación", "auditoría"]
+  }
+]

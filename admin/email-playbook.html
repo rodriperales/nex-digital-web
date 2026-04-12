@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<title>Email playbook | Nex Digital</title>
+<meta name="robots" content="noindex,nofollow"/>
+<link rel="icon" type="image/svg+xml" href="/favicon.svg"/>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet"/>
+<style>
+*{box-sizing:border-box}
+body{margin:0;font-family:Inter,sans-serif;background:#F8FAFC;color:#0F172A}
+.wrap{max-width:1060px;margin:0 auto;padding:36px 20px 56px}
+.top{display:flex;justify-content:space-between;align-items:center;gap:1rem;flex-wrap:wrap;margin-bottom:18px}
+.brand{font-family:"Space Grotesk",sans-serif;font-weight:700;text-decoration:none;color:#0F172A}
+.back{font-size:.9rem;text-decoration:none;color:#4338CA}
+h1{font-family:"Space Grotesk",sans-serif;font-size:clamp(1.5rem,2.8vw,2rem);margin:.2rem 0 .55rem}
+p{color:#475569;line-height:1.66}
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-top:1rem}
+.card{background:#fff;border:1px solid rgba(15,23,42,.08);border-radius:14px;padding:1rem;box-shadow:0 10px 24px rgba(15,23,42,.05)}
+.card h2{margin:0 0 .45rem;font-family:"Space Grotesk",sans-serif;font-size:1rem}
+.meta{font-size:.8rem;color:#64748B;margin-bottom:.7rem}
+.box{background:#F8FAFC;border:1px solid rgba(15,23,42,.08);border-radius:10px;padding:.7rem .75rem;font-size:.88rem;white-space:pre-wrap;line-height:1.55}
+.subject{margin-bottom:.5rem}
+.usage{margin-top:.6rem;font-size:.82rem;color:#475569}
+button{margin-top:.7rem;border:none;border-radius:999px;padding:.55rem .85rem;background:linear-gradient(135deg,#4F46E5,#7C3AED);color:#fff;font-size:.8rem;font-weight:600;cursor:pointer}
+@media(max-width:900px){.grid{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+  <main class="wrap">
+    <div class="top">
+      <a class="brand" href="/admin/">Nex Digital · Admin</a>
+      <a class="back" href="/admin/">Volver al panel interno</a>
+    </div>
+    <h1>Playbook de emails</h1>
+    <p>Plantillas estáticas para responder leads con consistencia comercial y operativa.</p>
+    <section class="grid" id="templatesGrid"></section>
+  </main>
+
+  <script>
+  const grid=document.getElementById('templatesGrid');
+
+  function renderTemplateCard(template){
+    const card=document.createElement('article');
+    card.className='card';
+    card.innerHTML=
+      '<h2>'+template.label+'</h2>'+
+      '<div class="meta">ID: '+template.id+'</div>'+
+      '<div class="box subject"><strong>Asunto:</strong> '+template.subject+'</div>'+
+      '<div class="box">'+template.body+'</div>'+
+      '<p class="usage"><strong>Cuándo usarla:</strong> '+template.usage_note+'</p>';
+    const btn=document.createElement('button');
+    btn.type='button';
+    btn.textContent='Copiar plantilla';
+    btn.addEventListener('click',async()=>{
+      const full='Asunto: '+template.subject+'\n\n'+template.body;
+      try{
+        await navigator.clipboard.writeText(full);
+        btn.textContent='Copiada';
+        setTimeout(()=>{btn.textContent='Copiar plantilla';},1200);
+      }catch(_){
+        alert('No se pudo copiar automáticamente.');
+      }
+    });
+    card.appendChild(btn);
+    return card;
+  }
+
+  fetch('/data/email-templates.json',{cache:'no-store'})
+    .then(res=>res.json())
+    .then(data=>{
+      const templates=Array.isArray(data)?data:[];
+      grid.innerHTML='';
+      templates.forEach(item=>grid.appendChild(renderTemplateCard(item)));
+    })
+    .catch(()=>{
+      grid.innerHTML='<article class="card"><h2>Error de carga</h2><p>No se pudo cargar /data/email-templates.json</p></article>';
+    });
+  </script>
+</body>
+</html>

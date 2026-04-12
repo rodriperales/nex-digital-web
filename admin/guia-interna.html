@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<title>Guía interna | Nex Digital</title>
+<meta name="robots" content="noindex,nofollow"/>
+<link rel="icon" type="image/svg+xml" href="/favicon.svg"/>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet"/>
+<style>
+*{box-sizing:border-box}
+body{margin:0;font-family:Inter,sans-serif;background:#F8FAFC;color:#0F172A}
+.wrap{max-width:980px;margin:0 auto;padding:36px 20px 56px}
+.top{display:flex;justify-content:space-between;align-items:center;gap:1rem;flex-wrap:wrap;margin-bottom:18px}
+.brand{font-family:"Space Grotesk",sans-serif;font-weight:700;text-decoration:none;color:#0F172A}
+.back{font-size:.9rem;text-decoration:none;color:#4338CA}
+h1{font-family:"Space Grotesk",sans-serif;font-size:clamp(1.5rem,2.8vw,2rem);margin:.2rem 0 .55rem}
+h2{font-family:"Space Grotesk",sans-serif;font-size:1.02rem;margin:1.2rem 0 .45rem}
+p,li{color:#475569;line-height:1.65}
+.card{background:#fff;border:1px solid rgba(15,23,42,.08);border-radius:14px;padding:1rem;box-shadow:0 10px 24px rgba(15,23,42,.05)}
+ul{margin:.4rem 0;padding-left:1.1rem}
+.links{display:flex;gap:.55rem;flex-wrap:wrap;margin:.65rem 0}
+.links a{text-decoration:none;color:#4338CA;background:#EEF2FF;border:1px solid rgba(79,70,229,.18);padding:.38rem .68rem;border-radius:999px;font-size:.82rem}
+code{background:#EEF2FF;padding:.1rem .3rem;border-radius:6px}
+</style>
+</head>
+<body>
+  <main class="wrap">
+    <div class="top">
+      <a class="brand" href="/admin/">Nex Digital · Admin</a>
+      <a class="back" href="/admin/">Volver al panel interno</a>
+    </div>
+    <h1>Guía interna corta</h1>
+    <div class="card">
+      <h2>Herramientas internas</h2>
+      <ul>
+        <li><code>/admin/score.html</code>: simula leads y calcula score, prioridad y bucket.</li>
+        <li><code>/admin/proposal-builder.html</code>: genera propuestas base desde datos estáticos.</li>
+        <li><code>/admin/email-playbook.html</code>: consulta y copia plantillas de correo.</li>
+      </ul>
+
+      <h2>Datos que alimentan cada herramienta</h2>
+      <ul>
+        <li><code>/data/faq.json</code> alimenta la FAQ buscable de la home.</li>
+        <li><code>/data/scoring-rules.json</code> define reglas y buckets de scoring.</li>
+        <li><code>/data/services.json</code> alimenta el constructor de propuestas.</li>
+        <li><code>/data/email-templates.json</code> alimenta el playbook de emails.</li>
+        <li><code>/data/proposal-template.md</code> define la estructura de propuesta.</li>
+      </ul>
+
+      <h2>Cómo ampliar FAQ</h2>
+      <p>Añade nuevas entradas en <code>/data/faq.json</code> con <code>id</code>, <code>question</code>, <code>answer</code>, <code>category</code> y <code>keywords</code>. El buscador las cargará automáticamente.</p>
+
+      <h2>Cómo cambiar reglas de scoring</h2>
+      <p>Edita <code>/data/scoring-rules.json</code> ajustando puntos por campo y mínimos por bucket. El formulario y la herramienta de scoring usarán las nuevas reglas al recargar.</p>
+
+      <h2>Cómo editar servicios y plantillas</h2>
+      <p>Actualiza <code>/data/services.json</code> para nuevas líneas de servicio y <code>/data/email-templates.json</code> para nuevos guiones de respuesta. No requiere backend ni despliegue especial.</p>
+
+      <div class="links">
+        <a href="/admin/score.html">Abrir scoring</a>
+        <a href="/admin/proposal-builder.html">Abrir proposal builder</a>
+        <a href="/admin/email-playbook.html">Abrir playbook</a>
+      </div>
+    </div>
+  </main>
+</body>
+</html>

@@ -1,0 +1,56 @@
+{
+  "version": "1.1",
+  "fields": {
+    "tipo_necesidad": {
+      "Web corporativa para mi negocio": 12,
+      "Landing para captar presupuestos": 18,
+      "Web comercial completa (captación)": 24,
+      "Web + automatización útil": 30,
+      "Necesito orientación": 8,
+      "default": 0
+    },
+    "objetivo_principal": {
+      "Conseguir más solicitudes de presupuesto": 26,
+      "Mejorar imagen y credibilidad de marca": 14,
+      "Ordenar contacto y atención de leads": 22,
+      "Lanzar una nueva línea o servicio": 18,
+      "default": 0
+    },
+    "urgencia": {
+      "Esta semana": 20,
+      "Este mes": 14,
+      "En las próximas semanas": 10,
+      "Solo quiero explorar opciones": 4,
+      "default": 0
+    },
+    "presupuesto_orientativo": {
+      "Aún no lo sé": 4,
+      "Proyecto inicial / ajustado": 10,
+      "Proyecto medio": 16,
+      "Proyecto más completo": 22,
+      "default": 0
+    }
+  },
+  "buckets": [
+    {
+      "name": "lead frío",
+      "priority": "baja",
+      "min": 0
+    },
+    {
+      "name": "lead normal",
+      "priority": "media",
+      "min": 25
+    },
+    {
+      "name": "lead bueno",
+      "priority": "alta",
+      "min": 50
+    },
+    {
+      "name": "lead prioritario",
+      "priority": "muy alta",
+      "min": 75
+    }
+  ]
+}

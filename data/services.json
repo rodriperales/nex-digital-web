@@ -1,0 +1,70 @@
+[
+  {
+    "id": "base_digital",
+    "name": "Base digital",
+    "summary": "Estructura web profesional para presentar la propuesta de valor y canalizar contacto.",
+    "includes": [
+      "Arquitectura de contenidos",
+      "Diseño responsive",
+      "Formulario principal de contacto",
+      "Preparación para publicación"
+    ],
+    "not_includes": [
+      "Integraciones avanzadas",
+      "Automatizaciones complejas",
+      "Estrategia de campañas de pago"
+    ],
+    "best_for": "Negocios que necesitan una base sólida para empezar a captar con claridad."
+  },
+  {
+    "id": "captacion",
+    "name": "Captación",
+    "summary": "Sistema comercial enfocado en convertir visitas en solicitudes cualificadas.",
+    "includes": [
+      "Landing o estructura comercial",
+      "Mensajes orientados a conversión",
+      "Formulario de presupuesto",
+      "Recorrido de contacto optimizado"
+    ],
+    "not_includes": [
+      "Automatización operativa completa",
+      "Integraciones a medida complejas",
+      "Gestión comercial diaria del cliente"
+    ],
+    "best_for": "Negocios con necesidad directa de aumentar solicitudes y mejorar calidad de lead."
+  },
+  {
+    "id": "automatizacion_operativa",
+    "name": "Automatización operativa",
+    "summary": "Automatizaciones acotadas para reducir tareas repetitivas de contacto y seguimiento.",
+    "includes": [
+      "Mapeo de proceso actual",
+      "Reglas simples de seguimiento",
+      "Priorización inicial de leads",
+      "Documentación de uso"
+    ],
+    "not_includes": [
+      "Automatización total de la empresa",
+      "Sustitución completa del equipo",
+      "Modelos predictivos o IA avanzada"
+    ],
+    "best_for": "Equipos que ya captan oportunidades y quieren más orden y velocidad operativa."
+  },
+  {
+    "id": "sistema_combinado",
+    "name": "Sistema combinado",
+    "summary": "Base web, captación y automatización útil en una hoja de ruta por fases.",
+    "includes": [
+      "Estructura web + captación",
+      "Reglas de scoring por criterios",
+      "Automatizaciones de seguimiento inicial",
+      "Plan de evolución por fases"
+    ],
+    "not_includes": [
+      "Implementaciones enterprise complejas",
+      "Integraciones sin alcance definido",
+      "Operación comercial externa"
+    ],
+    "best_for": "Negocios que buscan una solución integrada y escalable con control de alcance."
+  }
+]

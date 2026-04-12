@@ -1,0 +1,538 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<title>Estilo & Co. — Demo Premium para Portfolio de Nex Digital</title>
+<meta name="description" content="Demo premium de peluquería creada como ejemplo de portfolio para Nex Digital. Diseño elegante, visual y orientado a conversión."/>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet"/>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --gold:#C9A96E;--gold-light:#E9D6B3;--dark:#0E1016;--dark2:#171B24;
+  --cream:#FAF7F1;--gray:#6B7280;--white:#fff;--radius:1.25rem;
+  --ease:cubic-bezier(.22,1,.36,1);
+}
+html{scroll-behavior:smooth}
+body{font-family:'Inter',sans-serif;color:var(--dark);background:var(--white);overflow-x:hidden}
+body.menu-open{overflow:hidden}
+a{color:inherit}
+
+#preloader{position:fixed;inset:0;z-index:9999;background:radial-gradient(circle at top,rgba(201,169,110,.12),transparent 30%),var(--dark);display:flex;align-items:center;justify-content:center;transition:opacity .55s,visibility .55s}
+#preloader.hidden{opacity:0;visibility:hidden;pointer-events:none}
+.loader-ring{position:relative;width:72px;height:72px;border:2px solid rgba(201,169,110,.18);border-top-color:var(--gold);border-radius:50%;animation:spin .85s linear infinite}
+.loader-ring::after{content:'';position:absolute;inset:14px;border-radius:50%;border:2px solid rgba(255,255,255,.08);border-bottom-color:var(--gold-light);animation:spinReverse 1.6s linear infinite}
+@keyframes spin{to{transform:rotate(360deg)}}
+@keyframes spinReverse{to{transform:rotate(-360deg)}}
+
+.cursor-glow{position:fixed;width:320px;height:320px;border-radius:50%;pointer-events:none;z-index:9998;background:radial-gradient(circle,rgba(201,169,110,.08) 0%,transparent 70%);transform:translate(-50%,-50%);transition:left .15s ease-out,top .15s ease-out;display:none}
+@media(hover:hover){.cursor-glow{display:block}}
+
+nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:0 5%;display:flex;align-items:center;justify-content:space-between;height:74px;background:rgba(255,255,255,0);backdrop-filter:blur(0);transition:all .4s var(--ease)}
+nav.scrolled{background:rgba(255,255,255,.84);backdrop-filter:blur(16px);box-shadow:0 1px 24px rgba(0,0,0,.06)}
+nav.scrolled .nav-logo,nav.scrolled .nav-links a{color:var(--dark)}
+.nav-logo{font-family:'Playfair Display',serif;font-size:1.5rem;font-weight:700;color:var(--white);transition:color .3s;position:relative;z-index:102}
+.nav-logo span{color:var(--gold)}
+.nav-links{display:flex;gap:2rem;list-style:none}
+.nav-links a{text-decoration:none;color:rgba(255,255,255,.84);font-size:.82rem;font-weight:600;letter-spacing:.08em;text-transform:uppercase;transition:color .2s;position:relative}
+.nav-links a::after{content:'';position:absolute;left:0;bottom:-4px;width:0;height:2px;background:var(--gold);transition:width .3s var(--ease)}
+.nav-links a:hover::after,.nav-links a.active::after{width:100%}
+.nav-cta{background:var(--gold)!important;color:var(--white)!important;padding:.58rem 1.35rem;border-radius:2rem;box-shadow:0 10px 24px rgba(201,169,110,.28)}
+.nav-cta::after{display:none!important}
+.nav-cta:hover{transform:translateY(-2px)}
+.hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;z-index:102}
+.hamburger span{display:block;width:24px;height:2px;background:var(--white);transition:.3s}
+nav.scrolled .hamburger span{background:var(--dark)}
+.hamburger.open span:nth-child(1){transform:translateY(7px) rotate(45deg)}
+.hamburger.open span:nth-child(2){opacity:0}
+.hamburger.open span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
+
+#hero{position:relative;min-height:100vh;display:flex;align-items:center;overflow:hidden;background:var(--dark)}
+.hero-bg{position:absolute;inset:0;background:url('https://images.unsplash.com/photo-1560066984-138dadb4c035?w=1400&q=80') center/cover;filter:brightness(.32);transform:scale(1.08);animation:heroZoom 20s ease-in-out infinite alternate}
+@keyframes heroZoom{0%{transform:scale(1.08)}100%{transform:scale(1.16)}}
+.hero-overlay{position:absolute;inset:0;background:linear-gradient(135deg,rgba(14,16,22,.88) 0%,rgba(14,16,22,.5) 56%,rgba(201,169,110,.14) 100%)}
+.hero-lines{position:absolute;inset:0;background-image:linear-gradient(rgba(255,255,255,.04) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.04) 1px,transparent 1px);background-size:42px 42px;mask-image:radial-gradient(circle at center,black 46%,transparent 100%);opacity:.38}
+.hero-particles{position:absolute;inset:0;overflow:hidden}
+.particle{position:absolute;width:3px;height:3px;background:rgba(201,169,110,.42);border-radius:50%;animation:float-up linear infinite}
+@keyframes float-up{0%{transform:translateY(100vh) scale(0);opacity:0}10%{opacity:1}90%{opacity:1}100%{transform:translateY(-10vh) scale(1);opacity:0}}
+.hero-content{position:relative;z-index:2;padding:0 8%;max-width:760px}
+.hero-badge{display:inline-flex;align-items:center;gap:.5rem;background:rgba(201,169,110,.12);border:1px solid rgba(201,169,110,.24);color:var(--gold);font-size:.72rem;font-weight:700;letter-spacing:.11em;text-transform:uppercase;padding:.45rem 1.1rem;border-radius:2rem;margin-bottom:1.6rem;animation:fadeSlideUp .8s var(--ease) .25s both}
+.hero-title{font-family:'Playfair Display',serif;font-size:clamp(2.8rem,5.5vw,4.9rem);line-height:1.03;font-weight:700;color:var(--white);margin-bottom:1.3rem;animation:fadeSlideUp .8s var(--ease) .45s both}
+.hero-title em{font-style:italic;background:linear-gradient(135deg,var(--gold),var(--gold-light));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.hero-sub{font-size:1.08rem;color:rgba(255,255,255,.68);line-height:1.82;max-width:520px;margin-bottom:2.2rem;animation:fadeSlideUp .8s var(--ease) .65s both}
+.hero-btns{display:flex;gap:1rem;flex-wrap:wrap;animation:fadeSlideUp .8s var(--ease) .85s both}
+.hero-stats{display:flex;gap:2.4rem;flex-wrap:wrap;margin-top:3rem;padding-top:2rem;border-top:1px solid rgba(255,255,255,.09);animation:fadeSlideUp .8s var(--ease) 1.05s both}
+.stat-num{font-family:'Playfair Display',serif;font-size:2.1rem;font-weight:700;color:var(--white)}
+.stat-label{font-size:.72rem;color:rgba(255,255,255,.42);text-transform:uppercase;letter-spacing:.08em;margin-top:.2rem}
+.hero-scroll{position:absolute;bottom:2rem;left:50%;transform:translateX(-50%);z-index:2;display:flex;flex-direction:column;align-items:center;gap:.5rem;color:rgba(255,255,255,.36);font-size:.7rem;letter-spacing:.12em;text-transform:uppercase;animation:fadeSlideUp .8s var(--ease) 1.2s both}
+.scroll-line{width:1px;height:40px;background:linear-gradient(to bottom,var(--gold),transparent);animation:scrollPulse 2s ease-in-out infinite}
+@keyframes scrollPulse{0%,100%{opacity:.3;transform:scaleY(.6)}50%{opacity:1;transform:scaleY(1)}}
+@keyframes fadeSlideUp{from{opacity:0;transform:translateY(30px)}to{opacity:1;transform:none}}
+
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:.5rem;padding:.95rem 2rem;border-radius:3rem;font-size:.88rem;font-weight:700;text-decoration:none;letter-spacing:.03em;transition:all .3s var(--ease);border:2px solid transparent;cursor:pointer;position:relative;overflow:hidden}
+.btn::before{content:'';position:absolute;inset:0;background:linear-gradient(120deg,transparent,rgba(255,255,255,.22),transparent);transform:translateX(-120%);transition:transform .6s var(--ease)}
+.btn:hover::before{transform:translateX(120%)}
+.btn-gold{background:var(--gold);color:var(--white);border-color:var(--gold)}
+.btn-gold:hover{transform:translateY(-3px);box-shadow:0 12px 32px rgba(201,169,110,.4)}
+.btn-glass{background:rgba(255,255,255,.08);color:var(--white);border-color:rgba(255,255,255,.18);backdrop-filter:blur(8px)}
+.btn-glass:hover{background:rgba(255,255,255,.15);border-color:rgba(255,255,255,.35)}
+.btn-dark{background:var(--dark);color:var(--white);border-color:var(--dark)}
+.btn-dark:hover{background:var(--gold);border-color:var(--gold);transform:translateY(-3px);box-shadow:0 10px 28px rgba(201,169,110,.35)}
+
+.marquee-wrap{background:linear-gradient(90deg,#C9A96E,#D8BA88,#C9A96E);padding:.85rem 0;overflow:hidden;white-space:nowrap}
+.marquee-track{display:flex;animation:marquee 30s linear infinite}
+.marquee-item{font-size:.78rem;font-weight:700;color:var(--white);text-transform:uppercase;letter-spacing:.14em;padding:0 2.5rem;flex-shrink:0}
+@keyframes marquee{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
+
+.section{padding:7rem 5%}
+.section-dark{background:var(--dark);color:var(--white)}
+.section-cream{background:var(--cream)}
+.container{max-width:1140px;margin:0 auto}
+.section-tag{display:inline-block;color:var(--gold);font-size:.72rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;margin-bottom:.8rem}
+.section-title{font-family:'Playfair Display',serif;font-size:clamp(1.9rem,3vw,2.9rem);font-weight:700;line-height:1.12}
+.section-sub{color:var(--gray);font-size:1rem;margin-top:.8rem;max-width:540px;line-height:1.8}
+.text-center{text-align:center}.text-center .section-sub{margin-inline:auto}
+[data-reveal]{opacity:0;transform:translateY(40px);transition:opacity .72s var(--ease),transform .72s var(--ease)}
+[data-reveal="left"]{transform:translateX(-50px)}
+[data-reveal="right"]{transform:translateX(50px)}
+[data-reveal="scale"]{transform:scale(.92)}
+[data-reveal].revealed{opacity:1;transform:none}
+
+.services-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;margin-top:3rem}
+.service-card{position:relative;background:var(--white);border-radius:var(--radius);padding:2.2rem;border:1px solid rgba(0,0,0,.06);overflow:hidden;cursor:pointer;transition:all .4s var(--ease);box-shadow:0 12px 32px rgba(0,0,0,.04)}
+.service-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--gold),var(--gold-light));transform:scaleX(0);transform-origin:left;transition:transform .4s var(--ease)}
+.service-card:hover{transform:translateY(-8px);box-shadow:0 24px 48px rgba(0,0,0,.08);border-color:transparent}
+.service-card:hover::before{transform:scaleX(1)}
+.service-icon{width:56px;height:56px;border-radius:1rem;background:linear-gradient(135deg,rgba(201,169,110,.12),rgba(201,169,110,.04));display:flex;align-items:center;justify-content:center;font-size:1.5rem;margin-bottom:1.2rem;transition:transform .3s var(--ease)}
+.service-card:hover .service-icon{transform:scale(1.1) rotate(-5deg)}
+.service-name{font-family:'Playfair Display',serif;font-size:1.15rem;font-weight:700;margin-bottom:.5rem}
+.service-desc{font-size:.85rem;color:var(--gray);line-height:1.7;margin-bottom:1.25rem}
+.service-bottom{display:flex;align-items:center;justify-content:space-between;padding-top:1rem;border-top:1px solid rgba(0,0,0,.06)}
+.price-tag{font-family:'Playfair Display',serif;font-size:1.4rem;font-weight:700;color:var(--gold)}
+.price-from{font-size:.7rem;color:var(--gray);text-transform:uppercase;letter-spacing:.08em}
+.service-arrow{width:36px;height:36px;border-radius:50%;background:var(--cream);display:flex;align-items:center;justify-content:center;font-size:.8rem;transition:all .3s var(--ease)}
+.service-card:hover .service-arrow{background:var(--gold);color:var(--white);transform:translateX(4px)}
+
+.about-grid{display:grid;grid-template-columns:1fr 1fr;gap:5rem;align-items:center;margin-top:2rem}
+.about-images{position:relative;height:560px}
+.about-img{position:absolute;border-radius:var(--radius);overflow:hidden;box-shadow:0 20px 50px rgba(0,0,0,.12)}
+.about-img img,.about-img-div{width:100%;height:100%;object-fit:cover;display:block;transition:transform .6s var(--ease)}
+.about-img:hover img,.about-img:hover .about-img-div{transform:scale(1.05)}
+.about-img-1{left:0;top:0;width:65%;height:75%;z-index:1}
+.about-img-2{right:0;bottom:0;width:50%;height:50%;z-index:2;border:4px solid var(--white)}
+.about-img-div{background-size:cover;background-position:center}
+.about-float{position:absolute;left:50%;top:52%;transform:translate(-50%,-50%);z-index:3;background:var(--gold);color:var(--white);border-radius:1rem;padding:1.2rem 1.5rem;text-align:center;box-shadow:0 12px 32px rgba(201,169,110,.4);animation:floatBadge 3s ease-in-out infinite}
+@keyframes floatBadge{0%,100%{transform:translate(-50%,-50%) translateY(0)}50%{transform:translate(-50%,-50%) translateY(-8px)}}
+.about-float strong{display:block;font-size:2rem;font-weight:700;font-family:'Playfair Display',serif}
+.about-float span{font-size:.7rem;text-transform:uppercase;letter-spacing:.08em;opacity:.85}
+.about-text p{color:var(--gray);line-height:1.85;margin:1rem 0;font-size:.95rem}
+.features-grid{display:grid;grid-template-columns:1fr 1fr;gap:.8rem;margin-top:1.5rem}
+.feature{display:flex;align-items:center;gap:.6rem;font-size:.85rem;font-weight:500;padding:.7rem .85rem;border-radius:.8rem;transition:background .2s}
+.feature:hover{background:var(--cream)}
+.feature-dot{width:7px;height:7px;border-radius:50%;background:var(--gold);flex-shrink:0}
+
+.gallery-slider{position:relative;margin-top:3rem;overflow:hidden;border-radius:var(--radius);box-shadow:0 24px 56px rgba(0,0,0,.08)}
+.gallery-track{display:flex;transition:transform .6s var(--ease);will-change:transform}
+.gallery-slide{flex:0 0 100%;position:relative;aspect-ratio:21/9;overflow:hidden}
+.gallery-slide-div{width:100%;height:100%;background-size:cover;background-position:center}
+.gallery-overlay{position:absolute;inset:0;background:linear-gradient(to top,rgba(0,0,0,.58),transparent 52%);display:flex;align-items:flex-end;padding:2.5rem;opacity:0;transition:opacity .3s}
+.gallery-slide:hover .gallery-overlay{opacity:1}
+.gallery-caption{color:var(--white);font-size:1rem;font-weight:500}
+.gallery-dots{display:flex;justify-content:center;gap:.6rem;margin-top:1.5rem}
+.gallery-dot{width:10px;height:10px;border-radius:50%;background:rgba(0,0,0,.12);cursor:pointer;transition:all .3s;border:none}
+.gallery-dot.active{background:var(--gold);transform:scale(1.3)}
+.gallery-nav{position:absolute;top:50%;transform:translateY(-50%);z-index:2;width:48px;height:48px;border-radius:50%;background:rgba(255,255,255,.9);border:none;cursor:pointer;font-size:1rem;display:flex;align-items:center;justify-content:center;box-shadow:0 4px 16px rgba(0,0,0,.12);transition:all .2s}
+.gallery-nav:hover{background:var(--gold);color:var(--white)}
+.gallery-prev{left:1.5rem}.gallery-next{right:1.5rem}
+
+.testimonials-track{display:flex;gap:1.5rem;margin-top:3rem;overflow-x:auto;scroll-snap-type:x mandatory;-webkit-overflow-scrolling:touch;padding-bottom:1rem;scrollbar-width:none;-ms-overflow-style:none}
+.testimonials-track::-webkit-scrollbar{display:none}
+.testimonial{flex:0 0 min(360px,85vw);scroll-snap-align:start;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.06);border-radius:var(--radius);padding:2rem;position:relative;overflow:hidden;transition:border-color .3s,transform .3s var(--ease)}
+.testimonial::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,transparent,var(--gold),transparent);opacity:0;transition:opacity .3s}
+.testimonial:hover{border-color:rgba(201,169,110,.3);transform:translateY(-4px)}
+.testimonial:hover::before{opacity:1}
+.stars{color:var(--gold);font-size:.85rem;letter-spacing:.15em;margin-bottom:1rem}
+.testimonial-text{color:rgba(255,255,255,.75);font-size:.9rem;line-height:1.72;font-style:italic;margin-bottom:1.5rem}
+.testimonial-author{display:flex;align-items:center;gap:.8rem}
+.avatar{width:44px;height:44px;border-radius:50%;background:linear-gradient(135deg,var(--gold),var(--gold-light));display:flex;align-items:center;justify-content:center;color:var(--white);font-weight:700;font-size:.85rem}
+.author-name{color:var(--white);font-weight:600;font-size:.85rem}.author-sub{color:rgba(255,255,255,.35);font-size:.75rem;margin-top:.15rem}
+
+.contact-grid{display:grid;grid-template-columns:1fr 1.1fr;gap:4rem;margin-top:3rem;align-items:start}
+.contact-card{background:var(--white);border-radius:var(--radius);padding:2.5rem;box-shadow:0 20px 60px rgba(0,0,0,.06);border:1px solid rgba(0,0,0,.04);position:relative;overflow:hidden}
+.contact-card::before{content:'';position:absolute;inset:0 0 auto 0;height:120px;background:linear-gradient(180deg,rgba(201,169,110,.06),transparent)}
+.contact-card h3{font-family:'Playfair Display',serif;font-size:1.4rem;margin-bottom:1.5rem;position:relative}
+.form-row{display:grid;grid-template-columns:1fr 1fr;gap:1rem}
+.form-group{margin-bottom:1.1rem}
+.form-group label{display:block;font-size:.78rem;font-weight:600;margin-bottom:.4rem;letter-spacing:.04em;color:var(--dark)}
+.form-input{width:100%;padding:.84rem 1rem;border:1.5px solid rgba(0,0,0,.1);border-radius:.7rem;font-family:'Inter',sans-serif;font-size:.88rem;background:var(--cream);color:var(--dark);transition:all .2s;outline:none}
+.form-input:focus{border-color:var(--gold);background:var(--white);box-shadow:0 0 0 3px rgba(201,169,110,.12)}
+textarea.form-input{resize:vertical;min-height:90px}
+.submit-btn{width:100%;padding:1rem;background:var(--dark);color:var(--white);border:none;border-radius:.75rem;font-family:'Inter',sans-serif;font-size:.9rem;font-weight:700;cursor:pointer;transition:all .3s var(--ease);letter-spacing:.03em;position:relative;overflow:hidden}
+.submit-btn::before{content:'';position:absolute;inset:0;background:var(--gold);transform:translateX(-100%);transition:transform .4s var(--ease)}
+.submit-btn:hover::before{transform:translateX(0)}
+.submit-btn span{position:relative;z-index:1}
+.submit-btn:hover{transform:translateY(-2px);box-shadow:0 8px 24px rgba(201,169,110,.3)}
+.contact-info-item{display:flex;align-items:flex-start;gap:1rem;margin-bottom:1.2rem;padding:1rem;border-radius:1rem;background:var(--white);border:1px solid rgba(0,0,0,.05);box-shadow:0 10px 28px rgba(0,0,0,.04)}
+.contact-icon{width:48px;height:48px;border-radius:.9rem;background:linear-gradient(135deg,rgba(201,169,110,.12),rgba(201,169,110,.04));display:flex;align-items:center;justify-content:center;font-size:1.2rem;flex-shrink:0}
+.contact-item-text strong{display:block;font-size:.88rem;font-weight:700}.contact-item-text span{font-size:.82rem;color:var(--gray);line-height:1.6}
+.map-embed{border-radius:var(--radius);overflow:hidden;margin-top:1.5rem;border:1px solid rgba(0,0,0,.06);height:200px;position:relative;box-shadow:0 16px 40px rgba(0,0,0,.04)}
+.map-placeholder{width:100%;height:100%;background:linear-gradient(135deg,#F8F2E8,#F4EFE7);display:flex;align-items:center;justify-content:center;color:#7C6B4E;font-size:.95rem}
+
+footer{background:var(--dark);color:rgba(255,255,255,.5);padding:4rem 5% 1.5rem}
+.footer-grid{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:3rem;padding-bottom:3rem;border-bottom:1px solid rgba(255,255,255,.06)}
+.footer-brand p{font-size:.85rem;line-height:1.8;margin-top:.8rem;max-width:280px}
+.footer-col h4{color:var(--white);font-size:.85rem;font-weight:600;margin-bottom:1rem;text-transform:uppercase;letter-spacing:.06em}
+.footer-col a{display:block;color:rgba(255,255,255,.45);text-decoration:none;font-size:.85rem;margin-bottom:.6rem;transition:color .2s}
+.footer-col a:hover{color:var(--gold)}
+.footer-bottom{display:flex;justify-content:space-between;align-items:center;padding-top:1.5rem;flex-wrap:wrap;gap:1rem}
+.footer-bottom p{font-size:.78rem}.footer-socials{display:flex;gap:.6rem}
+.social{width:38px;height:38px;border-radius:50%;background:rgba(255,255,255,.06);display:flex;align-items:center;justify-content:center;color:rgba(255,255,255,.5);text-decoration:none;font-size:.85rem;transition:all .2s}
+.social:hover{background:var(--gold);color:var(--white);transform:translateY(-2px)}
+
+.sticky-cta{position:fixed;bottom:1.5rem;left:50%;transform:translateX(-50%) translateY(100px);z-index:98;background:var(--dark);color:var(--white);padding:.75rem 1.9rem;border-radius:3rem;font-size:.85rem;font-weight:700;text-decoration:none;box-shadow:0 8px 32px rgba(0,0,0,.2);transition:all .4s var(--ease);display:flex;align-items:center;gap:.5rem}
+.sticky-cta.visible{transform:translateX(-50%) translateY(0)}
+.sticky-cta:hover{background:var(--gold);box-shadow:0 8px 32px rgba(201,169,110,.4)}
+
+@media(max-width:900px){
+  .services-grid{grid-template-columns:1fr}
+  .about-grid{grid-template-columns:1fr;gap:2rem}
+  .about-images{height:350px}
+  .contact-grid{grid-template-columns:1fr}
+  .footer-grid{grid-template-columns:1fr 1fr;gap:2rem}
+  .nav-links{display:none;flex-direction:column;position:fixed;top:0;left:0;right:0;bottom:0;background:rgba(14,16,22,.96);justify-content:center;align-items:center;gap:2rem;z-index:101}
+  .nav-links.open{display:flex}
+  .nav-links.open a{color:var(--white);font-size:1.1rem}
+  .hamburger{display:flex}
+  .hero-stats{gap:1.5rem}
+  .form-row{grid-template-columns:1fr}
+  .gallery-slide{aspect-ratio:16/9}
+  .sticky-cta{display:none}
+}
+@media(max-width:600px){
+  .features-grid{grid-template-columns:1fr}
+  .footer-grid{grid-template-columns:1fr}
+  .about-images{height:280px}
+  .about-img-2{width:45%;height:45%}
+  .hero-btns{flex-direction:column;align-items:stretch}
+  .hero-btns .btn{width:100%}
+}
+</style>
+</head>
+<body>
+<div id="preloader"><div class="loader-ring"></div></div>
+<div class="cursor-glow" id="cursorGlow"></div>
+
+<nav id="nav">
+  <div class="nav-logo">Estilo<span>&</span>Co.</div>
+  <ul class="nav-links" id="navLinks">
+    <li><a href="#servicios">Servicios</a></li>
+    <li><a href="#nosotros">Nosotros</a></li>
+    <li><a href="#galeria">Galería</a></li>
+    <li><a href="#opiniones">Opiniones</a></li>
+    <li><a href="#contacto" class="nav-cta">Reservar cita</a></li>
+  </ul>
+  <div class="hamburger" id="burger"><span></span><span></span><span></span></div>
+</nav>
+
+<section id="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-overlay"></div>
+  <div class="hero-lines"></div>
+  <div class="hero-particles" id="particles"></div>
+  <div class="hero-content">
+    <div class="hero-badge">Caso demo premium · portfolio de agencia</div>
+    <h1 class="hero-title">Tu cabello,<br>tu <em>mejor</em><br>versión</h1>
+    <p class="hero-sub">Una demo elegante y muy visual pensada para enseñar a clientes potenciales el tipo de presencia digital que puede lograr su negocio.</p>
+    <div class="hero-btns">
+      <a href="#contacto" class="btn btn-gold">Reservar cita →</a>
+      <a href="#servicios" class="btn btn-glass">Ver servicios</a>
+    </div>
+    <div class="hero-stats">
+      <div><div class="stat-num" data-count="2000">0</div><div class="stat-label">Clientes felices</div></div>
+      <div><div class="stat-num" data-count="14">0</div><div class="stat-label">Años de experiencia</div></div>
+      <div><div class="stat-num" data-count="4.9" data-decimal="true">0</div><div class="stat-label">En Google ★</div></div>
+    </div>
+  </div>
+  <div class="hero-scroll"><span>Scroll</span><div class="scroll-line"></div></div>
+</section>
+
+<div class="marquee-wrap">
+  <div class="marquee-track">
+    <span class="marquee-item">✂️ Cortes de autor</span>
+    <span class="marquee-item">🎨 Coloración premium</span>
+    <span class="marquee-item">💆 Tratamientos exclusivos</span>
+    <span class="marquee-item">👰 Novias & eventos</span>
+    <span class="marquee-item">🧖 Alisado brasileño</span>
+    <span class="marquee-item">💅 Pack completo</span>
+    <span class="marquee-item">⭐ Demo de alto impacto visual</span>
+    <span class="marquee-item">📍 Gran Vía, Madrid</span>
+    <span class="marquee-item">✂️ Cortes de autor</span>
+    <span class="marquee-item">🎨 Coloración premium</span>
+    <span class="marquee-item">💆 Tratamientos exclusivos</span>
+    <span class="marquee-item">👰 Novias & eventos</span>
+    <span class="marquee-item">🧖 Alisado brasileño</span>
+    <span class="marquee-item">💅 Pack completo</span>
+    <span class="marquee-item">⭐ Demo de alto impacto visual</span>
+    <span class="marquee-item">📍 Gran Vía, Madrid</span>
+  </div>
+</div>
+
+<section id="servicios" class="section section-cream">
+  <div class="container">
+    <div class="text-center" data-reveal>
+      <span class="section-tag">Lo que ofrecemos</span>
+      <h2 class="section-title">Nuestros servicios</h2>
+      <p class="section-sub">Mantenemos la lógica de la demo, pero con una puesta en escena más refinada para que funcione mejor como ejemplo comercial.</p>
+    </div>
+    <div class="services-grid">
+      <div class="service-card" data-reveal>
+        <div class="service-icon">✂️</div>
+        <div class="service-name">Corte & Peinado</div>
+        <p class="service-desc">Corte personalizado según tu tipo de cabello y estilo de vida. Asesoramiento completo incluido.</p>
+        <div class="service-bottom"><div><div class="price-from">Desde</div><div class="price-tag">25€</div></div><div class="service-arrow">→</div></div>
+      </div>
+      <div class="service-card" data-reveal>
+        <div class="service-icon">🎨</div>
+        <div class="service-name">Color & Mechas</div>
+        <p class="service-desc">Coloración premium sin amoníaco. Balayage, ombré, babylights y coloración global.</p>
+        <div class="service-bottom"><div><div class="price-from">Desde</div><div class="price-tag">60€</div></div><div class="service-arrow">→</div></div>
+      </div>
+      <div class="service-card" data-reveal>
+        <div class="service-icon">💆</div>
+        <div class="service-name">Tratamientos</div>
+        <p class="service-desc">Hidratación profunda, keratina y Olaplex. Recupera la salud de tu cabello desde la raíz.</p>
+        <div class="service-bottom"><div><div class="price-from">Desde</div><div class="price-tag">45€</div></div><div class="service-arrow">→</div></div>
+      </div>
+      <div class="service-card" data-reveal>
+        <div class="service-icon">👰</div>
+        <div class="service-name">Novia & Eventos</div>
+        <p class="service-desc">Recogidos, ondas y peinados especiales. Incluye prueba previa y retoque el día del evento.</p>
+        <div class="service-bottom"><div><div class="price-from">Desde</div><div class="price-tag">80€</div></div><div class="service-arrow">→</div></div>
+      </div>
+      <div class="service-card" data-reveal>
+        <div class="service-icon">🧖</div>
+        <div class="service-name">Alisado Brasileño</div>
+        <p class="service-desc">Alisado de larga duración con fórmula vegana. Cabello liso, brillante y sin frizz hasta 6 meses.</p>
+        <div class="service-bottom"><div><div class="price-from">Desde</div><div class="price-tag">120€</div></div><div class="service-arrow">→</div></div>
+      </div>
+      <div class="service-card" data-reveal>
+        <div class="service-icon">💅</div>
+        <div class="service-name">Pack Completo</div>
+        <p class="service-desc">Corte + color + tratamiento + peinado. La experiencia Estilo & Co. completa a precio especial.</p>
+        <div class="service-bottom"><div><div class="price-from">Desde</div><div class="price-tag">110€</div></div><div class="service-arrow">→</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="nosotros" class="section">
+  <div class="container">
+    <div class="about-grid">
+      <div class="about-images" data-reveal="left">
+        <div class="about-img about-img-1"><div class="about-img-div" style="background-image:url('https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?w=600&q=80')"></div></div>
+        <div class="about-img about-img-2"><div class="about-img-div" style="background-image:url('https://images.unsplash.com/photo-1559599101-f09722fb4948?w=400&q=80')"></div></div>
+        <div class="about-float"><strong>14+</strong><span>años de<br>experiencia</span></div>
+      </div>
+      <div class="about-text" data-reveal="right">
+        <span class="section-tag">Sobre nosotros</span>
+        <h2 class="section-title">Una demo pensada para impresionar desde el primer vistazo</h2>
+        <p>Esta página sigue siendo una demo de peluquería, pero ahora encaja mejor como muestra de portfolio para tu agencia: más limpia, más premium y con mejor lectura visual.</p>
+        <p>El objetivo es que cualquier cliente entienda rápido el nivel de diseño y presentación que puedes entregar, aunque el ejemplo pertenezca a otro sector.</p>
+        <div class="features-grid">
+          <div class="feature"><div class="feature-dot"></div>Estética premium</div>
+          <div class="feature"><div class="feature-dot"></div>Mucho más visual</div>
+          <div class="feature"><div class="feature-dot"></div>Mejor encaje comercial</div>
+          <div class="feature"><div class="feature-dot"></div>Microinteracciones fluidas</div>
+          <div class="feature"><div class="feature-dot"></div>Mobile first</div>
+          <div class="feature"><div class="feature-dot"></div>Portfolio más sólido</div>
+        </div>
+        <br>
+        <a href="#contacto" class="btn btn-dark">Conoce al equipo →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="galeria" class="section section-cream">
+  <div class="container">
+    <div class="text-center" data-reveal>
+      <span class="section-tag">Nuestro trabajo</span>
+      <h2 class="section-title">Galería</h2>
+      <p class="section-sub">Una galería más limpia y vistosa para reforzar el efecto “wow” dentro de tu portfolio.</p>
+    </div>
+    <div class="gallery-slider" data-reveal="scale">
+      <div class="gallery-track" id="galleryTrack">
+        <div class="gallery-slide"><div class="gallery-slide-div" style="background-image:url('https://images.unsplash.com/photo-1521590832167-7bcbfaa6381f?w=1200&q=80')"></div><div class="gallery-overlay"><span class="gallery-caption">Balayage natural — Antes y después</span></div></div>
+        <div class="gallery-slide"><div class="gallery-slide-div" style="background-image:url('https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?w=1200&q=80')"></div><div class="gallery-overlay"><span class="gallery-caption">Nuestro espacio de trabajo</span></div></div>
+        <div class="gallery-slide"><div class="gallery-slide-div" style="background-image:url('https://images.unsplash.com/photo-1562322140-8baeececf3df?w=1200&q=80')"></div><div class="gallery-overlay"><span class="gallery-caption">Coloración premium Wella</span></div></div>
+        <div class="gallery-slide"><div class="gallery-slide-div" style="background-image:url('https://images.unsplash.com/photo-1500840216050-6ffa99d75160?w=1200&q=80')"></div><div class="gallery-overlay"><span class="gallery-caption">Recogido para eventos</span></div></div>
+      </div>
+      <button class="gallery-nav gallery-prev" onclick="slideGallery(-1)">‹</button>
+      <button class="gallery-nav gallery-next" onclick="slideGallery(1)">›</button>
+    </div>
+    <div class="gallery-dots" id="galleryDots"></div>
+  </div>
+</section>
+
+<section id="opiniones" class="section section-dark">
+  <div class="container">
+    <div class="text-center" data-reveal>
+      <span class="section-tag">Lo que dicen nuestros clientes</span>
+      <h2 class="section-title">Opiniones reales</h2>
+      <p class="section-sub" style="color:rgba(255,255,255,.4)">Una sección testimonial fuerte siempre ayuda a que la demo parezca más creíble.</p>
+    </div>
+    <div class="testimonials-track" data-reveal>
+      <div class="testimonial"><div class="stars">★★★★★</div><p class="testimonial-text">"Llevo 4 años viniendo y nunca me han decepcionado. El resultado siempre supera mis expectativas. El ambiente es increíble y el equipo es un amor."</p><div class="testimonial-author"><div class="avatar">LG</div><div><div class="author-name">Laura García</div><div class="author-sub">Cliente desde 2020</div></div></div></div>
+      <div class="testimonial"><div class="stars">★★★★★</div><p class="testimonial-text">"Me hice el balayage y quedó espectacular. Además me explicaron cómo mantenerlo en casa. Un servicio 10/10, totalmente recomendable."</p><div class="testimonial-author"><div class="avatar">SM</div><div><div class="author-name">Sara Martínez</div><div class="author-sub">Cliente desde 2022</div></div></div></div>
+      <div class="testimonial"><div class="stars">★★★★★</div><p class="testimonial-text">"Me hicieron el peinado de novia y fue perfecto. Aguantó todo el día y todas las fotos quedaron preciosas. No puedo estar más contenta."</p><div class="testimonial-author"><div class="avatar">MR</div><div><div class="author-name">María Romero</div><div class="author-sub">Novia · Junio 2024</div></div></div></div>
+      <div class="testimonial"><div class="stars">★★★★★</div><p class="testimonial-text">"Fui por primera vez por recomendación de una amiga y ya no voy a ningún otro sitio. El trato es exquisito y los precios muy justos."</p><div class="testimonial-author"><div class="avatar">AP</div><div><div class="author-name">Ana Pérez</div><div class="author-sub">Cliente desde 2023</div></div></div></div>
+      <div class="testimonial"><div class="stars">★★★★★</div><p class="testimonial-text">"Mi peluquero Carlos es un artista. Siempre me escucha y me aconseja. El alisado brasileño me cambió la vida, literalmente."</p><div class="testimonial-author"><div class="avatar">RL</div><div><div class="author-name">Rocío López</div><div class="author-sub">Cliente desde 2021</div></div></div></div>
+    </div>
+  </div>
+</section>
+
+<section id="contacto" class="section">
+  <div class="container">
+    <div class="text-center" data-reveal>
+      <span class="section-tag">Contacto</span>
+      <h2 class="section-title">Reserva tu cita</h2>
+      <p class="section-sub">Formulario simple, respuesta visual cuidada y estructura más consistente con la home principal.</p>
+    </div>
+    <div class="contact-grid">
+      <div data-reveal="left">
+        <div class="contact-info-item"><div class="contact-icon">📍</div><div class="contact-item-text"><strong>Dirección</strong><span>Calle Gran Vía 24, Madrid</span></div></div>
+        <div class="contact-info-item"><div class="contact-icon">📞</div><div class="contact-item-text"><strong>Teléfono</strong><span>+34 610 234 567</span></div></div>
+        <div class="contact-info-item"><div class="contact-icon">🕐</div><div class="contact-item-text"><strong>Horario</strong><span>Lun–Sáb: 9:00 – 20:00</span></div></div>
+        <div class="contact-info-item"><div class="contact-icon">📧</div><div class="contact-item-text"><strong>Email</strong><span>Contacto de ejemplo para la demo</span></div></div>
+        <div class="map-embed"><div class="map-placeholder">📍 Ver en Google Maps</div></div>
+      </div>
+      <div class="contact-card" data-reveal="right">
+        <h3>Solicitar cita</h3>
+        <form id="bookingForm">
+          <div class="form-row">
+            <div class="form-group"><label>Nombre</label><input class="form-input" type="text" placeholder="Tu nombre" required/></div>
+            <div class="form-group"><label>Teléfono</label><input class="form-input" type="tel" placeholder="+34 600 000 000" required/></div>
+          </div>
+          <div class="form-group"><label>Servicio</label>
+            <select class="form-input" required>
+              <option value="">¿Qué servicio necesitas?</option>
+              <option>Corte & Peinado</option>
+              <option>Color & Mechas</option>
+              <option>Tratamiento</option>
+              <option>Novia & Eventos</option>
+              <option>Alisado Brasileño</option>
+              <option>Pack Completo</option>
+            </select>
+          </div>
+          <div class="form-group"><label>Fecha preferida</label><input class="form-input" type="date" required/></div>
+          <div class="form-group"><label>Mensaje (opcional)</label><textarea class="form-input" placeholder="Cuéntanos algo sobre lo que buscas..."></textarea></div>
+          <button type="submit" class="submit-btn"><span>Solicitar cita →</span></button>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-grid">
+    <div class="footer-brand">
+      <div class="nav-logo" style="color:#fff">Estilo<span>&</span>Co.</div>
+      <p>Demo premium de peluquería incluida como ejemplo visual de portfolio para Nex Digital.</p>
+    </div>
+    <div class="footer-col"><h4>Servicios</h4><a href="#">Corte & Peinado</a><a href="#">Color & Mechas</a><a href="#">Tratamientos</a><a href="#">Novia & Eventos</a></div>
+    <div class="footer-col"><h4>Info</h4><a href="#">Sobre nosotros</a><a href="#">Galería</a><a href="#">Opiniones</a><a href="#">Blog</a></div>
+    <div class="footer-col"><h4>Legal</h4><a href="#">Aviso legal</a><a href="#">Privacidad</a><a href="#">Cookies</a></div>
+  </div>
+  <div class="footer-bottom">
+    <p>© 2026 Estilo & Co. · Demo para portfolio</p>
+    <div class="footer-socials"><a href="#" class="social">📷</a><a href="#" class="social">🐦</a><a href="#" class="social">💼</a></div>
+  </div>
+</footer>
+
+<a href="#contacto" class="sticky-cta" id="stickyCta">🗓️ Reservar cita ahora</a>
+
+<script>
+window.addEventListener('load',()=>{setTimeout(()=>document.getElementById('preloader').classList.add('hidden'),550);});
+const glow=document.getElementById('cursorGlow');
+document.addEventListener('mousemove',e=>{if(glow){glow.style.left=e.clientX+'px';glow.style.top=e.clientY+'px';}});
+
+const nav=document.getElementById('nav');
+const stickyCta=document.getElementById('stickyCta');
+window.addEventListener('scroll',()=>{nav.classList.toggle('scrolled',scrollY>80);stickyCta.classList.toggle('visible',scrollY>window.innerHeight*.8);},{passive:true});
+
+const burger=document.getElementById('burger');
+const navLinks=document.getElementById('navLinks');
+burger.addEventListener('click',()=>{navLinks.classList.toggle('open');burger.classList.toggle('open');document.body.classList.toggle('menu-open');});
+document.querySelectorAll('.nav-links a').forEach(a=>a.addEventListener('click',()=>{navLinks.classList.remove('open');burger.classList.remove('open');document.body.classList.remove('menu-open');}));
+
+const pCont=document.getElementById('particles');
+for(let i=0;i<25;i++){
+  const p=document.createElement('div');p.className='particle';
+  p.style.left=Math.random()*100+'%';
+  p.style.animationDuration=(8+Math.random()*12)+'s';
+  p.style.animationDelay=Math.random()*10+'s';
+  p.style.width=p.style.height=(2+Math.random()*3)+'px';
+  pCont.appendChild(p);
+}
+
+const revealObserver=new IntersectionObserver((entries)=>{entries.forEach((e,i)=>{if(e.isIntersecting){setTimeout(()=>e.target.classList.add('revealed'),i*60);revealObserver.unobserve(e.target);}});},{threshold:.15});
+document.querySelectorAll('[data-reveal]').forEach(el=>revealObserver.observe(el));
+
+function animateCount(el){
+  const target=parseFloat(el.dataset.count);
+  const isDecimal=el.dataset.decimal==='true';
+  const duration=2000;const start=performance.now();
+  function update(now){
+    const progress=Math.min((now-start)/duration,1);
+    const eased=1-Math.pow(1-progress,3);
+    const current=eased*target;
+    if(isDecimal) el.textContent=current.toFixed(1)+'★';
+    else if(target>=1000) el.textContent='+'+Math.floor(current).toLocaleString('es');
+    else el.textContent=Math.floor(current);
+    if(progress<1) requestAnimationFrame(update);
+  }
+  requestAnimationFrame(update);
+}
+const countObserver=new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isIntersecting){animateCount(e.target);countObserver.unobserve(e.target);}});},{threshold:.5});
+document.querySelectorAll('[data-count]').forEach(el=>countObserver.observe(el));
+
+const sections=[...document.querySelectorAll('section[id]')];
+const navAnchors=[...document.querySelectorAll('.nav-links a:not(.nav-cta)')];
+const sectionObserver=new IntersectionObserver(entries=>{entries.forEach(entry=>{if(entry.isIntersecting){navAnchors.forEach(link=>link.classList.toggle('active',link.getAttribute('href')==='#'+entry.target.id));}});},{rootMargin:'-35% 0px -45% 0px',threshold:.01});
+sections.forEach(section=>sectionObserver.observe(section));
+
+let currentSlide=0;
+const track=document.getElementById('galleryTrack');
+const slides=track.children.length;
+const dotsContainer=document.getElementById('galleryDots');
+for(let i=0;i<slides;i++){
+  const dot=document.createElement('button');dot.className='gallery-dot'+(i===0?' active':'');
+  dot.onclick=()=>goToSlide(i);dotsContainer.appendChild(dot);
+}
+function goToSlide(n){
+  currentSlide=((n%slides)+slides)%slides;
+  track.style.transform=`translateX(-${currentSlide*100}%)`;
+  document.querySelectorAll('.gallery-dot').forEach((d,i)=>d.classList.toggle('active',i===currentSlide));
+}
+function slideGallery(dir){goToSlide(currentSlide+dir)}
+setInterval(()=>slideGallery(1),5000);
+let touchStartX=0;
+track.addEventListener('touchstart',e=>touchStartX=e.touches[0].clientX,{passive:true});
+track.addEventListener('touchend',e=>{const diff=touchStartX-e.changedTouches[0].clientX;if(Math.abs(diff)>50) slideGallery(diff>0?1:-1);},{passive:true});
+
+const bookingForm=document.getElementById('bookingForm');
+bookingForm.addEventListener('submit',function(e){
+  e.preventDefault();
+  const btn=this.querySelector('.submit-btn');
+  btn.innerHTML='<span>✅ ¡Cita solicitada con éxito!</span>';
+  btn.style.background='#2ecc71';
+  btn.style.pointerEvents='none';
+  setTimeout(()=>{btn.innerHTML='<span>Solicitar cita →</span>';btn.style.background='';btn.style.pointerEvents='';},3000);
+});
+
+document.querySelectorAll('a[href^="#"]').forEach(a=>{a.addEventListener('click',e=>{const href=a.getAttribute('href');if(!href||href==='#') return;const target=document.querySelector(href);if(target){e.preventDefault();target.scrollIntoView({behavior:'smooth',block:'start'});}});});
+</script>
+</body>
+</html>

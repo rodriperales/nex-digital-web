@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Redes sociales para negocio | Blog Nex Digital</title>
+<meta name="description" content="Categoria del blog enfocada a Instagram y TikTok para negocio: estrategia, plan editorial y reaprovechamiento de contenido."/>
+<meta name="robots" content="index,follow"/>
+<link rel="canonical" href="https://nexdigitalaiagency.pages.dev/blog/redes-sociales/"/>
+<link rel="icon" type="image/svg+xml" href="/favicon.svg"/>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet"/>
+<link rel="stylesheet" href="/blog/blog.css"/>
+</head>
+<body>
+<header class="blog-topbar">
+  <div class="blog-shell blog-topbar-inner">
+    <a href="/" class="blog-logo"><span class="blog-logo-dot"></span>Nex Digital</a>
+    <nav class="blog-nav" aria-label="Navegacion principal">
+      <a href="/#servicios">Servicios</a>
+      <a href="/blog/" aria-current="page">Blog</a>
+      <a href="/#contacto" class="blog-nav-cta">Contacto</a>
+    </nav>
+  </div>
+</header>
+
+<main class="blog-post-wrap">
+  <div class="blog-shell">
+    <nav class="blog-breadcrumb" aria-label="Breadcrumb">
+      <a href="/">Inicio</a>
+      <span>›</span>
+      <a href="/blog/">Blog</a>
+      <span>›</span>
+      <span>Redes sociales</span>
+    </nav>
+
+    <header class="blog-post-header">
+      <div class="blog-meta">
+        <span>Categoria editorial</span>
+        <span>Instagram + TikTok</span>
+      </div>
+      <h1>Redes sociales para negocio</h1>
+      <p>Aqui agrupamos las piezas enfocadas a Instagram y TikTok con criterio comercial: plan editorial, hooks, formato y continuidad.</p>
+    </header>
+
+    <section class="blog-section" style="padding-top:1.2rem">
+      <div class="blog-grid" id="socialPostsGrid"></div>
+      <div class="blog-empty-state" id="socialPostsEmpty" hidden>No hay articulos publicados aun en esta categoria.</div>
+    </section>
+  </div>
+</main>
+
+<footer class="blog-footer">
+  <div class="blog-shell blog-footer-inner">
+    <span>© 2026 Nex Digital</span>
+    <div class="blog-footer-links">
+      <a href="/blog/">Volver al blog</a>
+      <a href="https://www.instagram.com/nexdigitalaiagency/" target="_blank" rel="noopener noreferrer">Instagram</a>
+      <a href="https://www.tiktok.com/@nexdigitalaiagency" target="_blank" rel="noopener noreferrer">TikTok</a>
+    </div>
+  </div>
+</footer>
+
+<script>
+(function(){
+  const grid = document.getElementById('socialPostsGrid');
+  const empty = document.getElementById('socialPostsEmpty');
+
+  const formatDate = (value) => new Intl.DateTimeFormat('es-ES', { day:'2-digit', month:'long', year:'numeric' }).format(new Date(value));
+  const esc = (t='') => String(t).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;').replace(/'/g,'&#39;');
+
+  fetch('/data/posts.json')
+    .then((r)=>r.json())
+    .then((posts)=>{
+      const social = (Array.isArray(posts)?posts:[])
+        .filter((p)=>p && p.published && p.category_id === 'redes-sociales')
+        .sort((a,b)=>new Date(b.date)-new Date(a.date));
+
+      if(!social.length){
+        empty.hidden = false;
+        return;
+      }
+
+      grid.innerHTML = social.map((post)=>`
+        <article class="blog-card">
+          <div class="blog-meta">
+            <span>${esc(post.category)}</span>
+            <span>${formatDate(post.date)}</span>
+            <span>${esc(post.reading_time || '')}</span>
+          </div>
+          <h3>${esc(post.title)}</h3>
+          <p>${esc(post.excerpt || '')}</p>
+          <a class="blog-card-link" href="/blog/${encodeURIComponent(post.slug)}/">Leer articulo →</a>
+        </article>
+      `).join('');
+    })
+    .catch(()=>{
+      empty.hidden = false;
+    });
+})();
+</script>
+</body>
+</html>

@@ -1,0 +1,67 @@
+{
+  "version": "1.0",
+  "status": "preparado_sin_integraciones",
+  "notes": "Base editorial para futura automatizacion de borradores y planificacion sin conectar aun Supabase, Claude ni cron.",
+  "workflow_stages": [
+    "idea",
+    "draft",
+    "review",
+    "scheduled",
+    "published",
+    "refresh_pending"
+  ],
+  "required_post_fields": [
+    "slug",
+    "title",
+    "excerpt",
+    "category",
+    "category_id",
+    "date",
+    "published",
+    "reading_time",
+    "featured",
+    "priority",
+    "relevance_score",
+    "utility_score",
+    "keywords",
+    "key_takeaways",
+    "social_hook",
+    "intent",
+    "audience_level",
+    "content_type",
+    "workflow_stage",
+    "automation_ready",
+    "draft_source",
+    "repurpose_priority",
+    "social_formats",
+    "last_reviewed",
+    "next_review_date",
+    "evergreen_score"
+  ],
+  "future_integrations": {
+    "draft_generator": {
+      "provider": "pendiente",
+      "target": "markdown_or_html_draft",
+      "mode": "manual_review_required"
+    },
+    "content_storage": {
+      "provider": "pendiente",
+      "target": "structured_posts_and_revision_history"
+    },
+    "scheduler": {
+      "provider": "pendiente",
+      "target": "publish_window_and_category_queue"
+    },
+    "social_repurpose": {
+      "provider": "pendiente",
+      "target": "hooks_takeaways_and_caption_variants"
+    }
+  },
+  "editorial_quality_checks": [
+    "apertura_con_contexto_real",
+    "secciones_con_transiciones_claras",
+    "al_menos_un_escenario_aplicable",
+    "bloques_editoriales_visuales",
+    "cta_suave_y_coherente"
+  ]
+}

@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<title>Panel interno | Nex Digital</title>
+<meta name="robots" content="noindex,nofollow"/>
+<link rel="icon" type="image/svg+xml" href="/favicon.svg"/>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet"/>
+<style>
+*{box-sizing:border-box}
+body{margin:0;font-family:Inter,sans-serif;background:#F8FAFC;color:#0F172A}
+.wrap{max-width:1080px;margin:0 auto;padding:36px 20px 56px}
+.top{display:flex;justify-content:space-between;align-items:center;gap:1rem;flex-wrap:wrap;margin-bottom:20px}
+.brand{font-family:"Space Grotesk",sans-serif;font-weight:700;text-decoration:none;color:#0F172A}
+.back{font-size:.9rem;text-decoration:none;color:#4338CA}
+h1{font-family:"Space Grotesk",sans-serif;font-size:clamp(1.6rem,3vw,2.2rem);margin:.2rem 0 .55rem}
+p{color:#475569;line-height:1.66}
+.note{display:inline-flex;background:#EEF2FF;border:1px solid rgba(79,70,229,.18);color:#4338CA;padding:.45rem .75rem;border-radius:999px;font-size:.8rem;margin:.45rem 0 1rem}
+.grid{display:grid;grid-template-columns:repeat(2,1fr);gap:1rem;margin-top:1rem}
+.card{background:#fff;border:1px solid rgba(15,23,42,.08);border-radius:14px;padding:1rem;box-shadow:0 10px 24px rgba(15,23,42,.05)}
+.card h2{margin:0 0 .35rem;font-family:"Space Grotesk",sans-serif;font-size:1rem}
+.card p{margin:0 0 .8rem;font-size:.9rem}
+.card a{display:inline-flex;padding:.55rem .9rem;border-radius:999px;background:linear-gradient(135deg,#4F46E5,#7C3AED);color:#fff;text-decoration:none;font-size:.82rem;font-weight:600}
+@media(max-width:860px){.grid{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+  <main class="wrap">
+    <div class="top">
+      <a class="brand" href="/">Nex Digital</a>
+      <a class="back" href="/">Volver a la home</a>
+    </div>
+    <h1>Panel interno estático</h1>
+    <p>Hub interno para pruebas operativas de preventa y automatización básica sin API, sin backend y sin compute.</p>
+    <div class="note">Uso interno · versión ligera y mantenible</div>
+    <section class="grid">
+      <article class="card">
+        <h2>Scoring de leads</h2>
+        <p>Simula leads y calcula score, prioridad, bucket y desglose por criterio.</p>
+        <a href="/admin/score.html">Abrir scoring</a>
+      </article>
+      <article class="card">
+        <h2>Generador de propuesta</h2>
+        <p>Crea propuestas base reutilizando servicios y plantilla interna.</p>
+        <a href="/admin/proposal-builder.html">Abrir proposal builder</a>
+      </article>
+      <article class="card">
+        <h2>Playbook de emails</h2>
+        <p>Consulta plantillas y copia rápidamente respuestas para diferentes escenarios.</p>
+        <a href="/admin/email-playbook.html">Abrir playbook</a>
+      </article>
+      <article class="card">
+        <h2>Guía interna</h2>
+        <p>Resumen de herramientas, fuentes de datos y cómo ampliar cada módulo.</p>
+        <a href="/admin/guia-interna.html">Abrir guía interna</a>
+      </article>
+    </section>
+  </main>
+</body>
+</html>

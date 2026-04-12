@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Blog Nex Digital</title>
+    <link>https://nexdigitalaiagency.pages.dev/blog/</link>
+    <description>Artículos sobre webs para negocio, captación comercial y automatizaciones útiles.</description>
+    <language>es-es</language>
+    <lastBuildDate>Sat, 11 Apr 2026 12:00:00 +0000</lastBuildDate>
+    <atom:link href="https://nexdigitalaiagency.pages.dev/blog/rss.xml" rel="self" type="application/rss+xml"/>
+
+    <item>
+      <title>Chatbot, formulario o WhatsApp: qué canal conviene según tu negocio</title>
+      <link>https://nexdigitalaiagency.pages.dev/blog/chatbot-formulario-o-whatsapp/</link>
+      <guid isPermaLink="true">https://nexdigitalaiagency.pages.dev/blog/chatbot-formulario-o-whatsapp/</guid>
+      <pubDate>Sat, 11 Apr 2026 09:00:00 +0000</pubDate>
+      <description>Comparativa práctica para elegir canal principal de contacto y mantener calidad de lead.</description>
+    </item>
+
+    <item>
+      <title>8 errores en una web que no genera contactos (y cómo corregirlos)</title>
+      <link>https://nexdigitalaiagency.pages.dev/blog/errores-en-una-web-que-no-genera-contactos/</link>
+      <guid isPermaLink="true">https://nexdigitalaiagency.pages.dev/blog/errores-en-una-web-que-no-genera-contactos/</guid>
+      <pubDate>Thu, 09 Apr 2026 09:00:00 +0000</pubDate>
+      <description>Checklist para detectar y corregir bloqueos de conversión en webs de negocio.</description>
+    </item>
+
+    <item>
+      <title>Automatizaciones pequeñas que ahorran tiempo sin complicar tu negocio</title>
+      <link>https://nexdigitalaiagency.pages.dev/blog/automatizaciones-pequenas-que-ahorran-tiempo/</link>
+      <guid isPermaLink="true">https://nexdigitalaiagency.pages.dev/blog/automatizaciones-pequenas-que-ahorran-tiempo/</guid>
+      <pubDate>Tue, 07 Apr 2026 09:00:00 +0000</pubDate>
+      <description>Mejoras operativas simples para seguimiento y priorización de leads.</description>
+    </item>
+
+    <item>
+      <title>Cuando una landing basta (y cuándo ya necesitas una web completa)</title>
+      <link>https://nexdigitalaiagency.pages.dev/blog/cuando-una-landing-basta/</link>
+      <guid isPermaLink="true">https://nexdigitalaiagency.pages.dev/blog/cuando-una-landing-basta/</guid>
+      <pubDate>Sat, 04 Apr 2026 09:00:00 +0000</pubDate>
+      <description>Guía para decidir entre landing y web completa según contexto comercial.</description>
+    </item>
+  </channel>
+</rss>

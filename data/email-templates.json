@@ -1,0 +1,37 @@
+[
+  {
+    "id": "primer_contacto",
+    "label": "Primer contacto",
+    "subject": "Revisión inicial de tu solicitud",
+    "body": "Hola {{nombre}},\n\nGracias por compartir tu solicitud sobre {{necesidad}}.\n\nHe revisado tu caso y veo potencial para trabajar {{enfoque}}. Si te parece bien, el siguiente paso es concretar alcance, prioridad y tiempos para preparar una propuesta orientativa.\n\nQuedo atento a tu confirmación.\n\nUn saludo,\nNex Digital",
+    "usage_note": "Usar tras recibir un lead completo y con información suficiente para proponer siguiente paso."
+  },
+  {
+    "id": "seguimiento",
+    "label": "Seguimiento suave",
+    "subject": "Seguimiento de propuesta orientativa",
+    "body": "Hola {{nombre}},\n\nTe escribo para hacer seguimiento de la propuesta orientativa que compartimos.\n\nSi sigue siendo una prioridad, puedo enviarte una versión ajustada al alcance actual y ayudarte a decidir el mejor punto de arranque.\n\nQuedo atento.\n\nUn saludo,\nNex Digital",
+    "usage_note": "Usar cuando han pasado varios días sin respuesta tras el primer intercambio."
+  },
+  {
+    "id": "mas_info",
+    "label": "Solicitud de información adicional",
+    "subject": "Necesito un par de datos para afinar la propuesta",
+    "body": "Hola {{nombre}},\n\nPara enviarte una propuesta más precisa necesito confirmar tres puntos:\n1) objetivo principal del proyecto,\n2) urgencia,\n3) punto de partida actual.\n\nCon esos datos podré ajustar mejor alcance y prioridad.\n\nGracias de antemano.\n\nUn saludo,\nNex Digital",
+    "usage_note": "Usar con leads incompletos o ambiguos antes de cerrar una recomendación."
+  },
+  {
+    "id": "cierre_suave",
+    "label": "Cierre amable",
+    "subject": "Cierro este hilo por ahora",
+    "body": "Hola {{nombre}},\n\nComo no he recibido respuesta en los últimos días, cierro este hilo por ahora.\n\nSi más adelante retomáis el proyecto, estaré encantado de reactivarlo y actualizar la propuesta según vuestra situación actual.\n\nGracias por el interés.\n\nUn saludo,\nNex Digital",
+    "usage_note": "Usar para cerrar conversaciones inactivas sin perder tono profesional."
+  },
+  {
+    "id": "lead_poco_claro",
+    "label": "Respuesta a lead poco claro",
+    "subject": "Te propongo un enfoque inicial para ordenar el proyecto",
+    "body": "Hola {{nombre}},\n\nGracias por escribir. Para ayudarte con criterio, te propongo empezar por un enfoque base:\n- definir objetivo comercial,\n- ordenar captación y contacto,\n- priorizar la primera fase de ejecución.\n\nSi me confirmas estos puntos, te preparo una recomendación inicial más concreta.\n\nUn saludo,\nNex Digital",
+    "usage_note": "Usar cuando el lead mezcla necesidades y no tiene prioridad clara."
+  }
+]

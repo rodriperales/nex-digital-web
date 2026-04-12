@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<title>Scoring interno | Nex Digital</title>
+<meta name="robots" content="noindex,nofollow"/>
+<link rel="icon" type="image/svg+xml" href="/favicon.svg"/>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet"/>
+<style>
+*{box-sizing:border-box}
+body{margin:0;font-family:Inter,sans-serif;background:#F8FAFC;color:#0F172A}
+.wrap{max-width:920px;margin:0 auto;padding:36px 20px 56px}
+.top{display:flex;justify-content:space-between;align-items:center;gap:1rem;flex-wrap:wrap;margin-bottom:18px}
+.brand{font-family:"Space Grotesk",sans-serif;font-weight:700;text-decoration:none;color:#0F172A}
+.back{font-size:.9rem;text-decoration:none;color:#4338CA}
+.card{background:#fff;border:1px solid rgba(15,23,42,.08);border-radius:16px;padding:24px;box-shadow:0 12px 28px rgba(15,23,42,.06)}
+h1{font-family:"Space Grotesk",sans-serif;font-size:clamp(1.45rem,2.5vw,2rem);margin:0 0 .55rem}
+p{margin:.3rem 0;color:#475569;line-height:1.66}
+.status{font-size:.86rem;color:#4338CA;background:#EEF2FF;border:1px solid rgba(79,70,229,.18);display:inline-flex;padding:.4rem .72rem;border-radius:999px;margin:.55rem 0 1rem}
+textarea{width:100%;min-height:180px;border:1px solid rgba(15,23,42,.12);border-radius:12px;padding:.9rem;font-family:Consolas,monospace;font-size:.86rem;line-height:1.55;resize:vertical}
+.actions{display:flex;gap:.65rem;flex-wrap:wrap;margin-top:.9rem}
+button{border:none;border-radius:999px;padding:.66rem 1rem;font-weight:600;cursor:pointer}
+.btn-primary{background:linear-gradient(135deg,#4F46E5,#7C3AED);color:#fff}
+.btn-ghost{background:#EEF2FF;color:#4338CA;border:1px solid rgba(79,70,229,.18)}
+.result{margin-top:1.15rem;display:grid;grid-template-columns:repeat(3,1fr);gap:.75rem}
+.metric{background:#F8FAFC;border:1px solid rgba(15,23,42,.08);border-radius:12px;padding:.85rem}
+.metric strong{display:block;font-family:"Space Grotesk",sans-serif;font-size:1.15rem;color:#0F172A}
+.metric span{font-size:.78rem;color:#64748B;text-transform:uppercase;letter-spacing:.06em}
+.breakdown{margin-top:1rem;background:#F8FAFC;border:1px solid rgba(15,23,42,.08);border-radius:12px;padding:.85rem}
+.breakdown h2{margin:0 0 .55rem;font-family:"Space Grotesk",sans-serif;font-size:1rem}
+.breakdown ul{margin:0;padding-left:1.05rem}
+.breakdown li{margin:.25rem 0;color:#475569;font-size:.88rem}
+@media(max-width:760px){.result{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+  <main class="wrap">
+    <div class="top">
+      <a class="brand" href="/">Nex Digital</a>
+      <a class="back" href="/admin/">Volver al panel interno</a>
+    </div>
+    <section class="card">
+      <h1>Demo interna de scoring</h1>
+      <p>Herramienta interna para probar reglas de scoring sin API ni backend. Pega un JSON con datos de lead o carga un ejemplo.</p>
+      <div class="status" id="rulesStatus">Cargando reglas...</div>
+      <textarea id="leadInput" aria-label="Datos del lead en JSON"></textarea>
+      <div class="actions">
+        <button class="btn-ghost" id="loadExampleBtn" type="button">Cargar ejemplo</button>
+        <button class="btn-primary" id="scoreBtn" type="button">Calcular score</button>
+      </div>
+      <div class="result">
+        <div class="metric"><span>Score total</span><strong id="scoreValue">0</strong></div>
+        <div class="metric"><span>Prioridad</span><strong id="priorityValue">pendiente</strong></div>
+        <div class="metric"><span>Bucket</span><strong id="bucketValue">sin clasificar</strong></div>
+      </div>
+      <div class="breakdown">
+        <h2>Desglose por campo</h2>
+        <ul id="breakdownList"></ul>
+      </div>
+    </section>
+  </main>
+
+  <script src="/assets/scoring.js"></script>
+  <script>
+  const leadInput=document.getElementById('leadInput');
+  const loadExampleBtn=document.getElementById('loadExampleBtn');
+  const scoreBtn=document.getElementById('scoreBtn');
+  const scoreValue=document.getElementById('scoreValue');
+  const priorityValue=document.getElementById('priorityValue');
+  const bucketValue=document.getElementById('bucketValue');
+  const breakdownList=document.getElementById('breakdownList');
+  const rulesStatus=document.getElementById('rulesStatus');
+
+  let rulesCache=null;
+
+  const exampleLead={
+    tipo_necesidad:'Web + automatización útil',
+    objetivo_principal:'Conseguir más solicitudes de presupuesto',
+    urgencia:'Esta semana',
+    presupuesto_orientativo:'Proyecto más completo'
+  };
+
+  loadExampleBtn.addEventListener('click',()=>{
+    leadInput.value=JSON.stringify(exampleLead,null,2);
+  });
+
+  scoreBtn.addEventListener('click',()=>{
+    let parsed;
+    try{
+      parsed=JSON.parse(leadInput.value||'{}');
+    }catch(err){
+      alert('El JSON no es válido. Revisa comillas y formato.');
+      return;
+    }
+    const result=window.LeadScoring.scoreLead(parsed,rulesCache);
+    scoreValue.textContent=String(result.score);
+    priorityValue.textContent=result.priority;
+    bucketValue.textContent=result.bucket;
+    breakdownList.innerHTML='';
+    Object.keys(result.breakdown).forEach(field=>{
+      const li=document.createElement('li');
+      li.textContent=field+': '+result.breakdown[field]+' puntos';
+      breakdownList.appendChild(li);
+    });
+  });
+
+  window.LeadScoring.loadRules('/data/scoring-rules.json')
+    .then(rules=>{
+      rulesCache=rules;
+      rulesStatus.textContent='Reglas cargadas correctamente';
+      leadInput.value=JSON.stringify(exampleLead,null,2);
+      scoreBtn.click();
+    })
+    .catch(()=>{
+      rulesStatus.textContent='No se pudieron cargar las reglas. Se aplicará un fallback mínimo.';
+      leadInput.value=JSON.stringify(exampleLead,null,2);
+    });
+  </script>
+</body>
+</html>
