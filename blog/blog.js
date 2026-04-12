@@ -290,15 +290,31 @@ function bindSearch() {
 
 async function initBlogIndex() {
   try {
-    const response = await fetch("/data/posts.json");
+    const SUPABASE_URL = "https://uksihlimqyjuavmeskth.supabase.co";
+    const SUPABASE_ANON_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InVrc2lobGltcXlqdWF2bWVza3RoIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzU5OTc5MjcsImV4cCI6MjA5MTU3MzkyN30.m7JurWW5LQog4jRehQRPWxZl8FksV3-v55mDpVhasi4";
+
+    const response = await fetch(
+      `${SUPABASE_URL}/rest/v1/posts?published=eq.true&select=slug,title,excerpt,description,category,category_id,published_at,reading_time,featured,priority,relevance_score,utility_score,evergreen_score,audience_level,intent,content_type,keywords,key_takeaways,social_hook,social_formats,repurpose_priority&order=published_at.desc`,
+      {
+        headers: {
+          "apikey": SUPABASE_ANON_KEY,
+          "Authorization": `Bearer ${SUPABASE_ANON_KEY}`
+        }
+      }
+    );
+
     if (!response.ok) {
-      throw new Error(`No se pudo cargar data/posts.json (${response.status})`);
+      throw new Error(`No se pudieron cargar los posts (${response.status})`);
     }
 
     const data = await response.json();
-    const posts = Array.isArray(data) ? data : [];
+    const posts = (Array.isArray(data) ? data : []).map(post => ({
+      ...post,
+      date: post.published_at || post.created_at,
+      recommended: (post.relevance_score || 0) >= 85
+    }));
 
-    state.posts = posts.filter((post) => post && post.published);
+    state.posts = posts;
 
     renderCategoryChips(state.posts);
     renderFeatured(state.posts);
