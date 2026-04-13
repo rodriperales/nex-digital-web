@@ -1,302 +1,540 @@
 [
-  {
-    "slug": "cuando-una-landing-basta",
-    "title": "Cuando una landing basta (y cuando ya necesitas una web completa)",
-    "excerpt": "Marco practico para decidir si empezar por una landing o pasar a una web completa segun el objetivo comercial y el tipo de servicio.",
-    "description": "Guia para decidir entre landing y web completa segun complejidad comercial, madurez del negocio y capacidad de seguimiento.",
-    "category": "Webs y captacion",
-    "category_id": "webs-y-captacion",
-    "date": "2026-04-04",
-    "published": true,
-    "reading_time": "10 min",
-    "featured": true,
-    "priority": 10,
-    "relevance_score": 94,
-    "utility_score": 92,
-    "recommended": true,
-    "audience_level": "fundamentos",
-    "intent": "decision",
-    "content_type": "guia",
-    "workflow_stage": "published",
-    "automation_ready": true,
-    "draft_source": "manual_v1",
-    "repurpose_priority": "alta",
-    "social_formats": ["carousel_instagram", "video_tiktok", "post_linkedin"],
-    "last_reviewed": "2026-04-12",
-    "next_review_date": "2026-05-12",
-    "evergreen_score": 90,
-    "social_hook": "No siempre necesitas una web completa para empezar a captar mejor.",
-    "keywords": [
-      "landing",
-      "web comercial",
-      "captacion",
-      "conversion",
-      "estructura digital"
-    ],
-    "concepts": [
-      "complejidad comercial",
-      "fase inicial",
-      "coste de oportunidad",
-      "validacion de oferta"
-    ],
-    "key_takeaways": [
-      "La eleccion depende del proceso de compra, no del tamano de la web.",
-      "Una landing funciona bien cuando hay un objetivo unico y mensaje claro.",
-      "La web completa conviene cuando necesitas educar y generar confianza."
-    ],
-    "related": [
-      "errores-en-una-web-que-no-genera-contactos",
-      "chatbot-formulario-o-whatsapp"
-    ]
-  },
-  {
-    "slug": "automatizaciones-pequenas-que-ahorran-tiempo",
-    "title": "Automatizaciones pequenas que ahorran tiempo sin complicar tu negocio",
-    "excerpt": "Cuatro automatizaciones realistas para ordenar el seguimiento comercial y reducir tareas repetitivas sin sobreingenieria.",
-    "description": "Ejemplos practicos de automatizacion util para captacion y seguimiento comercial con enfoque incremental.",
-    "category": "Automatizacion util",
-    "category_id": "automatizacion-util",
-    "date": "2026-04-07",
-    "published": true,
-    "reading_time": "11 min",
-    "featured": false,
-    "priority": 8,
-    "relevance_score": 89,
-    "utility_score": 93,
-    "recommended": true,
-    "audience_level": "intermedio",
-    "intent": "optimizacion",
-    "content_type": "guia",
-    "workflow_stage": "published",
-    "automation_ready": true,
-    "draft_source": "manual_v1",
-    "repurpose_priority": "alta",
-    "social_formats": ["carousel_instagram", "video_tiktok"],
-    "last_reviewed": "2026-04-12",
-    "next_review_date": "2026-05-12",
-    "evergreen_score": 88,
-    "social_hook": "Automatizar bien es quitar friccion, no meter complejidad.",
-    "keywords": [
-      "automatizacion",
-      "leads",
-      "seguimiento",
-      "priorizacion",
-      "eficiencia operativa"
-    ],
-    "concepts": [
-      "aviso inmediato",
-      "clasificacion por reglas",
-      "respuesta inicial",
-      "recordatorio de seguimiento"
-    ],
-    "key_takeaways": [
-      "Empieza por automatizaciones pequenas y medibles.",
-      "Ordenar el canal principal suele dar mas impacto que ampliar herramientas.",
-      "No conviene automatizar fases que aun requieren criterio comercial."
-    ],
-    "related": [
-      "chatbot-formulario-o-whatsapp",
-      "cuando-una-landing-basta"
-    ]
-  },
-  {
-    "slug": "errores-en-una-web-que-no-genera-contactos",
-    "title": "8 errores en una web que no genera contactos (y como corregirlos)",
-    "excerpt": "Checklist editorial para detectar bloqueos de conversion en propuesta de valor, estructura, formularios y confianza.",
-    "description": "Errores comunes en webs de negocio que frenan solicitudes y como corregirlos con cambios concretos.",
-    "category": "Atencion al cliente y leads",
-    "category_id": "atencion-al-cliente-y-leads",
-    "date": "2026-04-09",
-    "published": true,
-    "reading_time": "12 min",
-    "featured": false,
-    "priority": 9,
-    "relevance_score": 91,
-    "utility_score": 95,
-    "recommended": true,
-    "audience_level": "fundamentos",
-    "intent": "diagnostico",
-    "content_type": "checklist",
-    "workflow_stage": "published",
-    "automation_ready": true,
-    "draft_source": "manual_v1",
-    "repurpose_priority": "alta",
-    "social_formats": ["carousel_instagram", "video_tiktok", "email_snippet"],
-    "last_reviewed": "2026-04-12",
-    "next_review_date": "2026-05-12",
-    "evergreen_score": 93,
-    "social_hook": "Tu web puede verse bien y aun asi perder contactos cada semana.",
-    "keywords": [
-      "leads",
-      "formulario",
-      "conversion",
-      "propuesta de valor",
-      "web de negocio"
-    ],
-    "concepts": [
-      "friccion de contacto",
-      "cta principal",
-      "jerarquia de informacion",
-      "confianza comercial"
-    ],
-    "key_takeaways": [
-      "El problema suele estar en estructura y mensaje, no solo en trafico.",
-      "Un CTA principal claro mejora la conversion de forma inmediata.",
-      "Pequenos ajustes por fases pueden desbloquear resultados sin rehacer todo."
-    ],
-    "related": [
-      "cuando-una-landing-basta",
-      "automatizaciones-pequenas-que-ahorran-tiempo"
-    ]
-  },
-  {
-    "slug": "chatbot-formulario-o-whatsapp",
-    "title": "Chatbot, formulario o WhatsApp: que canal conviene segun tu tipo de negocio",
-    "excerpt": "Comparativa practica para elegir canal principal de contacto sin perder calidad de lead ni orden operativo.",
-    "description": "Como decidir entre chatbot, formulario o mensajeria segun complejidad del servicio y proceso comercial.",
-    "category": "Comparativas y decisiones",
-    "category_id": "comparativas-y-decisiones",
-    "date": "2026-04-11",
-    "published": true,
-    "reading_time": "9 min",
-    "featured": false,
-    "priority": 7,
-    "relevance_score": 86,
-    "utility_score": 88,
-    "recommended": true,
-    "audience_level": "fundamentos",
-    "intent": "decision",
-    "content_type": "comparativa",
-    "workflow_stage": "published",
-    "automation_ready": true,
-    "draft_source": "manual_v1",
-    "repurpose_priority": "media",
-    "social_formats": ["video_tiktok", "carousel_instagram"],
-    "last_reviewed": "2026-04-12",
-    "next_review_date": "2026-05-12",
-    "evergreen_score": 86,
-    "social_hook": "El mejor canal no es el mas moderno: es el que encaja con tu operativa.",
-    "keywords": [
-      "chatbot",
-      "formulario",
-      "canales de contacto",
-      "captacion",
-      "respuesta comercial"
-    ],
-    "concepts": [
-      "canal principal",
-      "canal secundario",
-      "calidad de lead",
-      "continuidad comercial"
-    ],
-    "key_takeaways": [
-      "Formulario para cualificar; chat para orientar; mensajeria como apoyo controlado.",
-      "Definir un canal principal evita dispersion y mejora trazabilidad.",
-      "La eleccion debe responder al proceso de venta, no a la moda de herramientas."
-    ],
-    "related": [
-      "errores-en-una-web-que-no-genera-contactos",
-      "automatizaciones-pequenas-que-ahorran-tiempo"
-    ]
-  },
-  {
-    "slug": "de-blog-a-instagram-y-tiktok-sin-perder-calidad",
-    "title": "De un articulo del blog a Instagram y TikTok sin perder calidad",
-    "excerpt": "Metodo para convertir una pieza larga en contenido social util sin perder el enfoque comercial.",
-    "description": "Guia para reaprovechar articulos del blog en redes sociales con criterio editorial y continuidad.",
-    "category": "Redes sociales para negocio",
-    "category_id": "redes-sociales",
-    "date": "2026-04-12",
-    "published": true,
-    "reading_time": "9 min",
-    "featured": false,
-    "priority": 8,
-    "relevance_score": 90,
-    "utility_score": 91,
-    "recommended": true,
-    "audience_level": "fundamentos",
-    "intent": "implementacion",
-    "content_type": "guia",
-    "workflow_stage": "published",
-    "automation_ready": true,
-    "draft_source": "manual_v1",
-    "repurpose_priority": "alta",
-    "social_formats": ["carousel_instagram", "video_tiktok", "story_script"],
-    "last_reviewed": "2026-04-12",
-    "next_review_date": "2026-05-12",
-    "evergreen_score": 89,
-    "social_hook": "No necesitas inventar contenido diario si ya tienes base editorial.",
-    "keywords": [
-      "instagram",
-      "tiktok",
-      "reaprovechar contenido",
-      "blog",
-      "contenido social"
-    ],
-    "concepts": [
-      "base editorial",
-      "hooks",
-      "repurposing",
-      "consistencia de mensaje"
-    ],
-    "key_takeaways": [
-      "Un articulo largo puede convertirse en varias piezas cortas con sentido.",
-      "El formato cambia por red, pero el criterio editorial se mantiene.",
-      "La clave es traducir contenido, no simplificarlo en exceso."
-    ],
-    "related": [
-      "plan-editorial-realista-para-instagram-y-tiktok",
-      "chatbot-formulario-o-whatsapp"
-    ]
-  },
-  {
-    "slug": "plan-editorial-realista-para-instagram-y-tiktok",
-    "title": "Plan editorial realista para Instagram y TikTok en negocios B2B",
-    "excerpt": "Estructura de publicacion sostenible para redes sociales sin publicar por publicar.",
-    "description": "Como crear un plan editorial simple y mantenible para Instagram y TikTok con enfoque comercial.",
-    "category": "Redes sociales para negocio",
-    "category_id": "redes-sociales",
-    "date": "2026-04-12",
-    "published": true,
-    "reading_time": "10 min",
-    "featured": false,
-    "priority": 8,
-    "relevance_score": 88,
-    "utility_score": 90,
-    "recommended": true,
-    "audience_level": "fundamentos",
-    "intent": "planificacion",
-    "content_type": "guia",
-    "workflow_stage": "published",
-    "automation_ready": true,
-    "draft_source": "manual_v1",
-    "repurpose_priority": "alta",
-    "social_formats": ["carousel_instagram", "video_tiktok", "caption_pack"],
-    "last_reviewed": "2026-04-12",
-    "next_review_date": "2026-05-12",
-    "evergreen_score": 87,
-    "social_hook": "Un plan realista vale mas que una frecuencia imposible de sostener.",
-    "keywords": [
-      "plan editorial",
-      "instagram",
-      "tiktok",
-      "contenido b2b",
-      "calendario de contenidos"
-    ],
-    "concepts": [
-      "consistencia",
-      "matriz editorial",
-      "frecuencia sostenible",
-      "biblioteca de temas"
-    ],
-    "key_takeaways": [
-      "La continuidad editorial importa mas que la cantidad puntual.",
-      "Conviene trabajar por bloques semanales con objetivos claros.",
-      "Conectar blog y redes reduce friccion y mejora coherencia."
-    ],
-    "related": [
-      "de-blog-a-instagram-y-tiktok-sin-perder-calidad",
-      "automatizaciones-pequenas-que-ahorran-tiempo"
-    ]
-  }
+    {
+        "slug":  "web-para-negocio-local-transforma-tu-presencia-online",
+        "title":  "Web para negocio local: transforma tu presencia online",
+        "excerpt":  "Guia para convertir una web local en un canal de confianza y captacion con foco en resultados reales.",
+        "description":  "Estrategia practica para que una web local genere consultas y oportunidades de negocio con continuidad.",
+        "category":  "Webs y captacion",
+        "category_id":  "webs-y-captacion",
+        "date":  "2026-03-26",
+        "published":  true,
+        "reading_time":  "10 min",
+        "featured":  false,
+        "priority":  7,
+        "relevance_score":  84,
+        "utility_score":  87,
+        "recommended":  true,
+        "audience_level":  "fundamentos",
+        "intent":  "implementacion",
+        "content_type":  "guia",
+        "workflow_stage":  "published",
+        "automation_ready":  true,
+        "draft_source":  "human_revision_v2",
+        "repurpose_priority":  "media",
+        "social_formats":  [
+                               "carousel_instagram",
+                               "video_tiktok"
+                           ],
+        "last_reviewed":  "2026-04-13",
+        "next_review_date":  "2026-05-13",
+        "evergreen_score":  86,
+        "social_hook":  "Una web local eficaz vende confianza en segundos, no solo diseno.",
+        "keywords":  [
+                         "web negocio local",
+                         "captacion local",
+                         "contacto web",
+                         "conversion local",
+                         "seo local"
+                     ],
+        "concepts":  [
+                         "claridad de oferta",
+                         "canal principal",
+                         "prueba social",
+                         "seguimiento comercial"
+                     ],
+        "key_takeaways":  [
+                              "La web local debe reducir dudas y facilitar contacto inmediato.",
+                              "Conviene definir un canal principal y usar el resto como apoyo.",
+                              "Pruebas reales generan mas confianza que promesas vacias."
+                          ],
+        "related":  [
+                        "como-captar-clientes-con-tu-web-estrategias-efectivas",
+                        "como-elegir-hosting-para-tu-web-de-negocio-guia-esencial"
+                    ]
+    },
+    {
+        "slug":  "como-elegir-hosting-para-tu-web-de-negocio-guia-esencial",
+        "title":  "Como elegir hosting para tu web de negocio: guia esencial",
+        "excerpt":  "Checklist realista para elegir hosting segun estabilidad, soporte y crecimiento.",
+        "description":  "Comparativa practica de opciones de hosting para negocio con foco en continuidad comercial.",
+        "category":  "Comparativas y decisiones",
+        "category_id":  "comparativas-y-decisiones",
+        "date":  "2026-03-28",
+        "published":  true,
+        "reading_time":  "10 min",
+        "featured":  false,
+        "priority":  7,
+        "relevance_score":  85,
+        "utility_score":  88,
+        "recommended":  true,
+        "audience_level":  "fundamentos",
+        "intent":  "decision",
+        "content_type":  "comparativa",
+        "workflow_stage":  "published",
+        "automation_ready":  true,
+        "draft_source":  "human_revision_v2",
+        "repurpose_priority":  "media",
+        "social_formats":  [
+                               "carousel_instagram",
+                               "video_tiktok",
+                               "post_linkedin"
+                           ],
+        "last_reviewed":  "2026-04-13",
+        "next_review_date":  "2026-05-13",
+        "evergreen_score":  89,
+        "social_hook":  "Hosting barato puede salir caro cuando tu web depende de captacion.",
+        "keywords":  [
+                         "hosting web",
+                         "vps",
+                         "rendimiento web",
+                         "soporte tecnico",
+                         "seguridad web"
+                     ],
+        "concepts":  [
+                         "disponibilidad",
+                         "sla",
+                         "backup",
+                         "escalado",
+                         "coste total"
+                     ],
+        "key_takeaways":  [
+                              "Elegir hosting es una decision comercial, no solo tecnica.",
+                              "Disponibilidad, soporte y backups pesan mas que precio mensual.",
+                              "La opcion correcta depende de fase y volumen de negocio."
+                          ],
+        "related":  [
+                        "web-para-negocio-local-transforma-tu-presencia-online",
+                        "cuando-una-landing-basta"
+                    ]
+    },
+    {
+        "slug":  "como-captar-clientes-con-tu-web-estrategias-efectivas",
+        "title":  "Como captar clientes con tu web: estrategias efectivas y realistas",
+        "excerpt":  "Estrategia para mejorar conversion web con mensaje claro, CTA coherente y seguimiento medible.",
+        "description":  "Marco de captacion para convertir una web en canal comercial util sin sobrecomplicar.",
+        "category":  "Webs y captacion",
+        "category_id":  "webs-y-captacion",
+        "date":  "2026-03-31",
+        "published":  true,
+        "reading_time":  "11 min",
+        "featured":  false,
+        "priority":  8,
+        "relevance_score":  88,
+        "utility_score":  90,
+        "recommended":  true,
+        "audience_level":  "fundamentos",
+        "intent":  "optimizacion",
+        "content_type":  "guia",
+        "workflow_stage":  "published",
+        "automation_ready":  true,
+        "draft_source":  "human_revision_v2",
+        "repurpose_priority":  "alta",
+        "social_formats":  [
+                               "carousel_instagram",
+                               "video_tiktok",
+                               "email_snippet"
+                           ],
+        "last_reviewed":  "2026-04-13",
+        "next_review_date":  "2026-05-13",
+        "evergreen_score":  90,
+        "social_hook":  "Tu web no necesita mas efectos: necesita menos friccion para convertir.",
+        "keywords":  [
+                         "captar clientes web",
+                         "conversion",
+                         "cta",
+                         "formulario",
+                         "propuesta de valor"
+                     ],
+        "concepts":  [
+                         "jerarquia de contenido",
+                         "trafico cualificado",
+                         "prueba social",
+                         "funnel comercial"
+                     ],
+        "key_takeaways":  [
+                              "La propuesta de valor condiciona toda la conversion.",
+                              "Un CTA claro y visible en varios puntos reduce friccion.",
+                              "Medir por etapa permite mejorar sin improvisar."
+                          ],
+        "related":  [
+                        "errores-en-una-web-que-no-genera-contactos",
+                        "cuando-una-landing-basta"
+                    ]
+    },
+    {
+        "slug":  "automatiza-el-seguimiento-de-clientes-clave-para-tu-negocio",
+        "title":  "Automatiza el seguimiento de clientes con criterio comercial",
+        "excerpt":  "Guia para estructurar seguimiento de leads y automatizar pasos clave sin perder calidad.",
+        "description":  "Metodo por fases para reducir olvidos y mejorar continuidad comercial con automatizacion util.",
+        "category":  "Atencion al cliente y leads",
+        "category_id":  "atencion-al-cliente-y-leads",
+        "date":  "2026-04-02",
+        "published":  true,
+        "reading_time":  "10 min",
+        "featured":  false,
+        "priority":  8,
+        "relevance_score":  90,
+        "utility_score":  91,
+        "recommended":  true,
+        "audience_level":  "intermedio",
+        "intent":  "implementacion",
+        "content_type":  "guia",
+        "workflow_stage":  "published",
+        "automation_ready":  true,
+        "draft_source":  "human_revision_v2",
+        "repurpose_priority":  "alta",
+        "social_formats":  [
+                               "carousel_instagram",
+                               "video_tiktok",
+                               "caption_pack"
+                           ],
+        "last_reviewed":  "2026-04-13",
+        "next_review_date":  "2026-05-13",
+        "evergreen_score":  90,
+        "social_hook":  "Muchos leads se pierden por seguimiento irregular, no por precio.",
+        "keywords":  [
+                         "seguimiento leads",
+                         "automatizacion comercial",
+                         "respuesta inicial",
+                         "crm",
+                         "continuidad"
+                     ],
+        "concepts":  [
+                         "flujo comercial",
+                         "clasificacion de leads",
+                         "recordatorios",
+                         "metricas operativas"
+                     ],
+        "key_takeaways":  [
+                              "Primero define flujo minimo y luego automatiza.",
+                              "Mensajes cortos y contextuales funcionan mejor que plantillas largas.",
+                              "Medir tiempos de respuesta evita fugas de oportunidad."
+                          ],
+        "related":  [
+                        "automatizaciones-pequenas-que-ahorran-tiempo",
+                        "chatbot-formulario-o-whatsapp"
+                    ]
+    },
+    {
+        "slug":  "cuando-una-landing-basta",
+        "title":  "Cuando una landing basta (y cuando ya necesitas una web completa)",
+        "excerpt":  "Marco practico para decidir si empezar por una landing o pasar a una web completa segun el objetivo comercial y el tipo de servicio.",
+        "description":  "Guia para decidir entre landing y web completa segun complejidad comercial, madurez del negocio y capacidad de seguimiento.",
+        "category":  "Webs y captacion",
+        "category_id":  "webs-y-captacion",
+        "date":  "2026-04-04",
+        "published":  true,
+        "reading_time":  "10 min",
+        "featured":  true,
+        "priority":  10,
+        "relevance_score":  94,
+        "utility_score":  92,
+        "recommended":  true,
+        "audience_level":  "fundamentos",
+        "intent":  "decision",
+        "content_type":  "guia",
+        "workflow_stage":  "published",
+        "automation_ready":  true,
+        "draft_source":  "manual_v1",
+        "repurpose_priority":  "alta",
+        "social_formats":  [
+                               "carousel_instagram",
+                               "video_tiktok",
+                               "post_linkedin"
+                           ],
+        "last_reviewed":  "2026-04-12",
+        "next_review_date":  "2026-05-12",
+        "evergreen_score":  90,
+        "social_hook":  "No siempre necesitas una web completa para empezar a captar mejor.",
+        "keywords":  [
+                         "landing",
+                         "web comercial",
+                         "captacion",
+                         "conversion",
+                         "estructura digital"
+                     ],
+        "concepts":  [
+                         "complejidad comercial",
+                         "fase inicial",
+                         "coste de oportunidad",
+                         "validacion de oferta"
+                     ],
+        "key_takeaways":  [
+                              "La eleccion depende del proceso de compra, no del tamano de la web.",
+                              "Una landing funciona bien cuando hay un objetivo unico y mensaje claro.",
+                              "La web completa conviene cuando necesitas educar y generar confianza."
+                          ],
+        "related":  [
+                        "errores-en-una-web-que-no-genera-contactos",
+                        "chatbot-formulario-o-whatsapp"
+                    ]
+    },
+    {
+        "slug":  "automatizaciones-pequenas-que-ahorran-tiempo",
+        "title":  "Automatizaciones pequenas que ahorran tiempo sin complicar tu negocio",
+        "excerpt":  "Cuatro automatizaciones realistas para ordenar el seguimiento comercial y reducir tareas repetitivas sin sobreingenieria.",
+        "description":  "Ejemplos practicos de automatizacion util para captacion y seguimiento comercial con enfoque incremental.",
+        "category":  "Automatizacion util",
+        "category_id":  "automatizacion-util",
+        "date":  "2026-04-07",
+        "published":  true,
+        "reading_time":  "11 min",
+        "featured":  false,
+        "priority":  8,
+        "relevance_score":  89,
+        "utility_score":  93,
+        "recommended":  true,
+        "audience_level":  "intermedio",
+        "intent":  "optimizacion",
+        "content_type":  "guia",
+        "workflow_stage":  "published",
+        "automation_ready":  true,
+        "draft_source":  "manual_v1",
+        "repurpose_priority":  "alta",
+        "social_formats":  [
+                               "carousel_instagram",
+                               "video_tiktok"
+                           ],
+        "last_reviewed":  "2026-04-12",
+        "next_review_date":  "2026-05-12",
+        "evergreen_score":  88,
+        "social_hook":  "Automatizar bien es quitar friccion, no meter complejidad.",
+        "keywords":  [
+                         "automatizacion",
+                         "leads",
+                         "seguimiento",
+                         "priorizacion",
+                         "eficiencia operativa"
+                     ],
+        "concepts":  [
+                         "aviso inmediato",
+                         "clasificacion por reglas",
+                         "respuesta inicial",
+                         "recordatorio de seguimiento"
+                     ],
+        "key_takeaways":  [
+                              "Empieza por automatizaciones pequenas y medibles.",
+                              "Ordenar el canal principal suele dar mas impacto que ampliar herramientas.",
+                              "No conviene automatizar fases que aun requieren criterio comercial."
+                          ],
+        "related":  [
+                        "chatbot-formulario-o-whatsapp",
+                        "cuando-una-landing-basta"
+                    ]
+    },
+    {
+        "slug":  "errores-en-una-web-que-no-genera-contactos",
+        "title":  "8 errores en una web que no genera contactos (y como corregirlos)",
+        "excerpt":  "Checklist editorial para detectar bloqueos de conversion en propuesta de valor, estructura, formularios y confianza.",
+        "description":  "Errores comunes en webs de negocio que frenan solicitudes y como corregirlos con cambios concretos.",
+        "category":  "Atencion al cliente y leads",
+        "category_id":  "atencion-al-cliente-y-leads",
+        "date":  "2026-04-09",
+        "published":  true,
+        "reading_time":  "12 min",
+        "featured":  false,
+        "priority":  9,
+        "relevance_score":  91,
+        "utility_score":  95,
+        "recommended":  true,
+        "audience_level":  "fundamentos",
+        "intent":  "diagnostico",
+        "content_type":  "checklist",
+        "workflow_stage":  "published",
+        "automation_ready":  true,
+        "draft_source":  "manual_v1",
+        "repurpose_priority":  "alta",
+        "social_formats":  [
+                               "carousel_instagram",
+                               "video_tiktok",
+                               "email_snippet"
+                           ],
+        "last_reviewed":  "2026-04-12",
+        "next_review_date":  "2026-05-12",
+        "evergreen_score":  93,
+        "social_hook":  "Tu web puede verse bien y aun asi perder contactos cada semana.",
+        "keywords":  [
+                         "leads",
+                         "formulario",
+                         "conversion",
+                         "propuesta de valor",
+                         "web de negocio"
+                     ],
+        "concepts":  [
+                         "friccion de contacto",
+                         "cta principal",
+                         "jerarquia de informacion",
+                         "confianza comercial"
+                     ],
+        "key_takeaways":  [
+                              "El problema suele estar en estructura y mensaje, no solo en trafico.",
+                              "Un CTA principal claro mejora la conversion de forma inmediata.",
+                              "Pequenos ajustes por fases pueden desbloquear resultados sin rehacer todo."
+                          ],
+        "related":  [
+                        "cuando-una-landing-basta",
+                        "automatizaciones-pequenas-que-ahorran-tiempo"
+                    ]
+    },
+    {
+        "slug":  "chatbot-formulario-o-whatsapp",
+        "title":  "Chatbot, formulario o WhatsApp: que canal conviene segun tu tipo de negocio",
+        "excerpt":  "Comparativa practica para elegir canal principal de contacto sin perder calidad de lead ni orden operativo.",
+        "description":  "Como decidir entre chatbot, formulario o mensajeria segun complejidad del servicio y proceso comercial.",
+        "category":  "Comparativas y decisiones",
+        "category_id":  "comparativas-y-decisiones",
+        "date":  "2026-04-11",
+        "published":  true,
+        "reading_time":  "9 min",
+        "featured":  false,
+        "priority":  7,
+        "relevance_score":  86,
+        "utility_score":  88,
+        "recommended":  true,
+        "audience_level":  "fundamentos",
+        "intent":  "decision",
+        "content_type":  "comparativa",
+        "workflow_stage":  "published",
+        "automation_ready":  true,
+        "draft_source":  "manual_v1",
+        "repurpose_priority":  "media",
+        "social_formats":  [
+                               "video_tiktok",
+                               "carousel_instagram"
+                           ],
+        "last_reviewed":  "2026-04-12",
+        "next_review_date":  "2026-05-12",
+        "evergreen_score":  86,
+        "social_hook":  "El mejor canal no es el mas moderno: es el que encaja con tu operativa.",
+        "keywords":  [
+                         "chatbot",
+                         "formulario",
+                         "canales de contacto",
+                         "captacion",
+                         "respuesta comercial"
+                     ],
+        "concepts":  [
+                         "canal principal",
+                         "canal secundario",
+                         "calidad de lead",
+                         "continuidad comercial"
+                     ],
+        "key_takeaways":  [
+                              "Formulario para cualificar; chat para orientar; mensajeria como apoyo controlado.",
+                              "Definir un canal principal evita dispersion y mejora trazabilidad.",
+                              "La eleccion debe responder al proceso de venta, no a la moda de herramientas."
+                          ],
+        "related":  [
+                        "errores-en-una-web-que-no-genera-contactos",
+                        "automatizaciones-pequenas-que-ahorran-tiempo"
+                    ]
+    },
+    {
+        "slug":  "de-blog-a-instagram-y-tiktok-sin-perder-calidad",
+        "title":  "De un articulo del blog a Instagram y TikTok sin perder calidad",
+        "excerpt":  "Metodo para convertir una pieza larga en contenido social util sin perder el enfoque comercial.",
+        "description":  "Guia para reaprovechar articulos del blog en redes sociales con criterio editorial y continuidad.",
+        "category":  "Redes sociales para negocio",
+        "category_id":  "redes-sociales",
+        "date":  "2026-04-12",
+        "published":  true,
+        "reading_time":  "9 min",
+        "featured":  false,
+        "priority":  8,
+        "relevance_score":  90,
+        "utility_score":  91,
+        "recommended":  true,
+        "audience_level":  "fundamentos",
+        "intent":  "implementacion",
+        "content_type":  "guia",
+        "workflow_stage":  "published",
+        "automation_ready":  true,
+        "draft_source":  "manual_v1",
+        "repurpose_priority":  "alta",
+        "social_formats":  [
+                               "carousel_instagram",
+                               "video_tiktok",
+                               "story_script"
+                           ],
+        "last_reviewed":  "2026-04-12",
+        "next_review_date":  "2026-05-12",
+        "evergreen_score":  89,
+        "social_hook":  "No necesitas inventar contenido diario si ya tienes base editorial.",
+        "keywords":  [
+                         "instagram",
+                         "tiktok",
+                         "reaprovechar contenido",
+                         "blog",
+                         "contenido social"
+                     ],
+        "concepts":  [
+                         "base editorial",
+                         "hooks",
+                         "repurposing",
+                         "consistencia de mensaje"
+                     ],
+        "key_takeaways":  [
+                              "Un articulo largo puede convertirse en varias piezas cortas con sentido.",
+                              "El formato cambia por red, pero el criterio editorial se mantiene.",
+                              "La clave es traducir contenido, no simplificarlo en exceso."
+                          ],
+        "related":  [
+                        "plan-editorial-realista-para-instagram-y-tiktok",
+                        "chatbot-formulario-o-whatsapp"
+                    ]
+    },
+    {
+        "slug":  "plan-editorial-realista-para-instagram-y-tiktok",
+        "title":  "Plan editorial realista para Instagram y TikTok en negocios B2B",
+        "excerpt":  "Estructura de publicacion sostenible para redes sociales sin publicar por publicar.",
+        "description":  "Como crear un plan editorial simple y mantenible para Instagram y TikTok con enfoque comercial.",
+        "category":  "Redes sociales para negocio",
+        "category_id":  "redes-sociales",
+        "date":  "2026-04-12",
+        "published":  true,
+        "reading_time":  "10 min",
+        "featured":  false,
+        "priority":  8,
+        "relevance_score":  88,
+        "utility_score":  90,
+        "recommended":  true,
+        "audience_level":  "fundamentos",
+        "intent":  "planificacion",
+        "content_type":  "guia",
+        "workflow_stage":  "published",
+        "automation_ready":  true,
+        "draft_source":  "manual_v1",
+        "repurpose_priority":  "alta",
+        "social_formats":  [
+                               "carousel_instagram",
+                               "video_tiktok",
+                               "caption_pack"
+                           ],
+        "last_reviewed":  "2026-04-12",
+        "next_review_date":  "2026-05-12",
+        "evergreen_score":  87,
+        "social_hook":  "Un plan realista vale mas que una frecuencia imposible de sostener.",
+        "keywords":  [
+                         "plan editorial",
+                         "instagram",
+                         "tiktok",
+                         "contenido b2b",
+                         "calendario de contenidos"
+                     ],
+        "concepts":  [
+                         "consistencia",
+                         "matriz editorial",
+                         "frecuencia sostenible",
+                         "biblioteca de temas"
+                     ],
+        "key_takeaways":  [
+                              "La continuidad editorial importa mas que la cantidad puntual.",
+                              "Conviene trabajar por bloques semanales con objetivos claros.",
+                              "Conectar blog y redes reduce friccion y mejora coherencia."
+                          ],
+        "related":  [
+                        "de-blog-a-instagram-y-tiktok-sin-perder-calidad",
+                        "automatizaciones-pequenas-que-ahorran-tiempo"
+                    ]
+    }
 ]

@@ -130,6 +130,78 @@ function getSearchText(post) {
   );
 }
 
+function inferCategoryId(post) {
+  if (post?.category_id) return post.category_id;
+  const byLabel = CATEGORY_CATALOG.find(
+    (category) => normalize(category.label) === normalize(post?.category || "")
+  );
+  return byLabel ? byLabel.id : "comparativas-y-decisiones";
+}
+
+function normalizePost(post) {
+  const date = post?.published_at || post?.date || post?.created_at || null;
+  return {
+    ...post,
+    category_id: inferCategoryId(post),
+    date,
+    published: post?.published !== false,
+    recommended:
+      typeof post?.recommended === "boolean"
+        ? post.recommended
+        : (post?.relevance_score || 0) >= 85
+  };
+}
+
+function mergePosts(supabasePosts, localPosts) {
+  const map = new Map();
+  [...(localPosts || []), ...(supabasePosts || [])].forEach((post) => {
+    if (!post?.slug) return;
+    map.set(post.slug, post);
+  });
+  return [...map.values()].filter((post) => post.published !== false);
+}
+
+async function loadSupabasePosts() {
+  const SUPABASE_URL = "https://uksihlimqyjuavmeskth.supabase.co";
+  const SUPABASE_ANON_KEY =
+    "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InVrc2lobGltcXlqdWF2bWVza3RoIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzU5OTc5MjcsImV4cCI6MjA5MTU3MzkyN30.m7JurWW5LQog4jRehQRPWxZl8FksV3-v55mDpVhasi4";
+
+  try {
+    const response = await fetch(
+      `${SUPABASE_URL}/rest/v1/posts?published=eq.true&select=slug,title,excerpt,description,category,category_id,published_at,reading_time,featured,priority,relevance_score,utility_score,evergreen_score,audience_level,intent,content_type,keywords,key_takeaways,social_hook,social_formats,repurpose_priority&order=published_at.desc`,
+      {
+        headers: {
+          apikey: SUPABASE_ANON_KEY,
+          Authorization: `Bearer ${SUPABASE_ANON_KEY}`
+        }
+      }
+    );
+
+    if (!response.ok) {
+      console.warn(`Supabase posts unavailable (${response.status})`);
+      return [];
+    }
+
+    const data = await response.json();
+    return (Array.isArray(data) ? data : []).map(normalizePost);
+  } catch (error) {
+    console.warn("Supabase posts load failed:", error);
+    return [];
+  }
+}
+
+async function loadLocalPosts() {
+  try {
+    const response = await fetch("/data/posts.json");
+    if (!response.ok) return [];
+    const data = await response.json();
+    return (Array.isArray(data) ? data : []).map(normalizePost);
+  } catch (error) {
+    console.warn("Local posts load failed:", error);
+    return [];
+  }
+}
+
 function renderCategoryChips(posts) {
   const counts = buildCategoryMap(posts);
   elements.categories.innerHTML = CATEGORY_CATALOG.map((category) => {
@@ -162,7 +234,7 @@ function renderFeatured(posts) {
       </div>
       <div class="blog-featured-side">
         <p><strong>Hook editorial:</strong> ${escapeHtml(featured.social_hook || "Lectura recomendada para tomar decisiones con criterio.")}</p>
-        <p><strong>Tipo de contenido:</strong> ${escapeHtml(featured.content_type || "articulo")} · <strong>Nivel:</strong> ${escapeHtml(featured.audience_level || "general")}</p>
+        <p><strong>Tipo de contenido:</strong> ${escapeHtml(featured.content_type || "articulo")} - <strong>Nivel:</strong> ${escapeHtml(featured.audience_level || "general")}</p>
         <p><strong>Takeaway:</strong> ${escapeHtml((featured.key_takeaways || [])[0] || "Primero claridad de enfoque, despues ejecucion.")}</p>
       </div>
     </article>
@@ -213,7 +285,7 @@ function postCard(post) {
         <div class="blog-score-row"><span>Relevancia</span><strong>${Number(post.relevance_score || 0)}/100</strong></div>
         <div class="blog-score-row"><span>Utilidad</span><strong>${Number(post.utility_score || 0)}/100</strong></div>
       </div>
-      <a class="blog-card-link" href="/blog/${encodeURIComponent(post.slug)}/">Leer articulo →</a>
+      <a class="blog-card-link" href="/blog/${encodeURIComponent(post.slug)}/">Leer articulo -></a>
     </article>
   `;
 }
@@ -290,29 +362,14 @@ function bindSearch() {
 
 async function initBlogIndex() {
   try {
-    const SUPABASE_URL = "https://uksihlimqyjuavmeskth.supabase.co";
-    const SUPABASE_ANON_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InVrc2lobGltcXlqdWF2bWVza3RoIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzU5OTc5MjcsImV4cCI6MjA5MTU3MzkyN30.m7JurWW5LQog4jRehQRPWxZl8FksV3-v55mDpVhasi4";
-
-    const response = await fetch(
-      `${SUPABASE_URL}/rest/v1/posts?published=eq.true&select=slug,title,excerpt,description,category,category_id,published_at,reading_time,featured,priority,relevance_score,utility_score,evergreen_score,audience_level,intent,content_type,keywords,key_takeaways,social_hook,social_formats,repurpose_priority&order=published_at.desc`,
-      {
-        headers: {
-          "apikey": SUPABASE_ANON_KEY,
-          "Authorization": `Bearer ${SUPABASE_ANON_KEY}`
-        }
-      }
+    const [supabasePosts, localPosts] = await Promise.all([loadSupabasePosts(), loadLocalPosts()]);
+    const posts = mergePosts(supabasePosts, localPosts).sort(
+      (a, b) => new Date(b.date).getTime() - new Date(a.date).getTime()
     );
 
-    if (!response.ok) {
-      throw new Error(`No se pudieron cargar los posts (${response.status})`);
+    if (!posts.length) {
+      throw new Error("No se encontraron posts publicados en ninguna fuente.");
     }
-
-    const data = await response.json();
-    const posts = (Array.isArray(data) ? data : []).map(post => ({
-      ...post,
-      date: post.published_at || post.created_at,
-      recommended: (post.relevance_score || 0) >= 85
-    }));
 
     state.posts = posts;
 
