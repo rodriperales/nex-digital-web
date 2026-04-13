@@ -296,6 +296,11 @@ nav.scrolled .burger span{background:var(--dark2)}
 .privacy-layer{margin-top:1.1rem;padding-top:1rem;border-top:1px solid rgba(15,23,42,.08);font-size:.74rem;line-height:1.62;color:#64748B}
 .privacy-layer a{color:#4338CA;text-decoration:none}
 .privacy-layer a:hover{text-decoration:underline}
+.consent-block{margin:.35rem 0 1rem;padding:.85rem .95rem;border:1px solid rgba(15,23,42,.1);border-radius:.75rem;background:#F8FAFC}
+.consent-check{display:flex;align-items:flex-start;gap:.62rem;font-size:.8rem;line-height:1.58;color:#334155;font-weight:500}
+.consent-check input{margin-top:.18rem;width:16px;height:16px;accent-color:var(--accent);flex-shrink:0}
+.consent-check a{color:#4338CA;text-decoration:none;font-weight:700}
+.consent-check a:hover{text-decoration:underline}
 .finput{width:100%;padding:.82rem 1rem;border:1.5px solid rgba(15,23,42,.08);border-radius:.75rem;font-family:'Inter',sans-serif;font-size:.88rem;background:#F8FAFC;color:var(--dark2);transition:all .2s;outline:none}
 .finput:focus{border-color:var(--accent);background:#fff;box-shadow:0 0 0 4px rgba(79,70,229,.1)}
 textarea.finput{resize:vertical;min-height:96px}
@@ -912,6 +917,14 @@ footer{background:#08101F;color:rgba(255,255,255,.42);padding:3rem 5% 1.5rem;pos
             </select>
           </div>
           <div class="fg"><label>Mensaje (opcional)</label><textarea class="finput" name="mensaje" placeholder="Cuéntame tu servicio principal, tipo de cliente y qué quieres mejorar con la nueva web..."></textarea></div>
+          <div class="consent-block">
+            <label class="consent-check">
+              <input type="checkbox" id="privacyConsent" name="acepta_politica_privacidad" value="si" required/>
+              <span>Acepto la <a href="/privacidad/" target="_blank" rel="noopener noreferrer">Politica de Privacidad</a>, el <a href="/aviso-legal/" target="_blank" rel="noopener noreferrer">Aviso Legal</a> y la <a href="/cookies/" target="_blank" rel="noopener noreferrer">Politica de Cookies</a>.</span>
+            </label>
+            <input type="hidden" name="consentimiento_version" value="provisional-2026-04-13"/>
+            <span class="fg-help">Consentimiento provisional hasta la publicacion legal definitiva del sitio.</span>
+          </div>
           <button type="submit" class="submit">Enviar formulario →</button>
           <p class="form-status" id="formStatus" aria-live="polite"></p>
           <p class="privacy-layer">Responsable: [titular pendiente de cierre]. Finalidad: atender tu solicitud y preparar una propuesta. Legitimacion: consentimiento y, en su caso, medidas precontractuales solicitadas por la persona usuaria. Destinatarios: no se cederan datos a terceros salvo obligacion legal; pueden intervenir proveedores tecnologicos necesarios para el formulario, alojamiento y correo. Derechos: puedes solicitar acceso, rectificacion, supresion y otros derechos escribiendo a [email legal pendiente]. Mas informacion en la <a href="/aviso-legal/#privacidad-plantilla">Politica de Privacidad</a>.</p>
@@ -1145,6 +1158,16 @@ document.getElementById('contactForm').addEventListener('submit',async function(
   const honeypotValue=(this.elements['bot-field']?.value||'').trim();
   if(honeypotValue){
     window.location.assign('/gracias/');
+    return;
+  }
+  const privacyConsentField=this.elements['acepta_politica_privacidad'];
+  if(privacyConsentField&&!privacyConsentField.checked){
+    const status=document.getElementById('formStatus');
+    if(status){
+      status.textContent='Debes aceptar la Politica de Privacidad, el Aviso Legal y la Politica de Cookies para enviar el formulario.';
+      status.className='form-status error';
+    }
+    privacyConsentField.focus();
     return;
   }
 
