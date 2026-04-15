@@ -536,5 +536,59 @@
                         "de-blog-a-instagram-y-tiktok-sin-perder-calidad",
                         "automatizaciones-pequenas-que-ahorran-tiempo"
                     ]
+    },
+    {
+        "slug":  "mejorar-velocidad-de-carga-web-clave-para-tu-negocio-digital",
+        "title":  "Mejorar velocidad de carga web: clave para captar y convertir mejor",
+        "excerpt":  "Guia practica para acelerar una web de negocio sin sacrificar claridad ni experiencia.",
+        "description":  "Checklist de rendimiento para reducir rebote, mejorar conversion y proteger SEO con un enfoque comercial.",
+        "category":  "Webs y captacion",
+        "category_id":  "webs-y-captacion",
+        "date":  "2026-04-15",
+        "published":  true,
+        "reading_time":  "9 min",
+        "featured":  false,
+        "priority":  8,
+        "relevance_score":  89,
+        "utility_score":  92,
+        "recommended":  true,
+        "audience_level":  "fundamentos",
+        "intent":  "optimizacion",
+        "content_type":  "guia",
+        "workflow_stage":  "published",
+        "automation_ready":  true,
+        "draft_source":  "human_revision_v3",
+        "repurpose_priority":  "alta",
+        "social_formats":  [
+                               "carousel_instagram",
+                               "video_tiktok",
+                               "email_snippet"
+                           ],
+        "last_reviewed":  "2026-04-15",
+        "next_review_date":  "2026-05-15",
+        "evergreen_score":  91,
+        "social_hook":  "Si tu web tarda en cargar, tu captacion ya va con retraso.",
+        "keywords":  [
+                         "velocidad web",
+                         "optimizacion",
+                         "conversion",
+                         "rendimiento",
+                         "core web vitals"
+                     ],
+        "concepts":  [
+                         "lcp",
+                         "inp",
+                         "cache",
+                         "carga critica"
+                     ],
+        "key_takeaways":  [
+                              "La velocidad impacta conversion, no solo posicionamiento.",
+                              "Conviene optimizar por prioridades en lugar de rehacer todo.",
+                              "Reducir friccion en los primeros segundos mejora continuidad comercial."
+                          ],
+        "related":  [
+                        "como-elegir-hosting-para-tu-web-de-negocio-guia-esencial",
+                        "errores-en-una-web-que-no-genera-contactos"
+                    ]
     }
 ]
