@@ -590,5 +590,59 @@
                         "como-elegir-hosting-para-tu-web-de-negocio-guia-esencial",
                         "errores-en-una-web-que-no-genera-contactos"
                     ]
+    },
+    {
+        "slug":  "pagina-de-servicios-elementos-clave-para-convertir-visitas",
+        "title":  "Pagina de servicios: elementos clave para convertir visitas",
+        "excerpt":  "Guia practica para estructurar una pagina de servicios que transmita valor y mejore conversion.",
+        "description":  "Marco de trabajo para crear paginas de servicios claras, creibles y orientadas a contacto cualificado.",
+        "category":  "Webs y captacion",
+        "category_id":  "webs-y-captacion",
+        "date":  "2026-04-16",
+        "published":  true,
+        "reading_time":  "10 min",
+        "featured":  false,
+        "priority":  8,
+        "relevance_score":  90,
+        "utility_score":  93,
+        "recommended":  true,
+        "audience_level":  "fundamentos",
+        "intent":  "implementacion",
+        "content_type":  "guia",
+        "workflow_stage":  "published",
+        "automation_ready":  true,
+        "draft_source":  "human_revision_v1",
+        "repurpose_priority":  "alta",
+        "social_formats":  [
+                               "carousel_instagram",
+                               "video_tiktok",
+                               "email_snippet"
+                           ],
+        "last_reviewed":  "2026-04-16",
+        "next_review_date":  "2026-05-16",
+        "evergreen_score":  90,
+        "social_hook":  "Una pagina de servicios no debe verse bonita: debe ayudar a decidir.",
+        "keywords":  [
+                         "pagina de servicios",
+                         "estructura comercial",
+                         "conversion web",
+                         "captacion",
+                         "cta"
+                     ],
+        "concepts":  [
+                         "claridad de oferta",
+                         "alcance orientativo",
+                         "proceso comercial",
+                         "contacto cualificado"
+                     ],
+        "key_takeaways":  [
+                              "La pagina de servicios debe responder dudas de decision, no solo listar tareas.",
+                              "Una estructura por bloques mejora lectura y calidad de lead.",
+                              "Definir alcance y CTA principal reduce friccion comercial."
+                          ],
+        "related":  [
+                        "como-captar-clientes-con-tu-web-estrategias-efectivas",
+                        "cuando-una-landing-basta"
+                    ]
     }
 ]

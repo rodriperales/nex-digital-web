@@ -138,12 +138,13 @@ function inferCategoryId(post) {
   return byLabel ? byLabel.id : "comparativas-y-decisiones";
 }
 
-function normalizePost(post) {
+function normalizePost(post, source = "local") {
   const date = post?.published_at || post?.date || post?.created_at || null;
   return {
     ...post,
     category_id: inferCategoryId(post),
     date,
+    _source: source,
     published: post?.published !== false,
     recommended:
       typeof post?.recommended === "boolean"
@@ -154,11 +155,19 @@ function normalizePost(post) {
 
 function mergePosts(supabasePosts, localPosts) {
   const map = new Map();
-  [...(localPosts || []), ...(supabasePosts || [])].forEach((post) => {
+  [...(supabasePosts || []), ...(localPosts || [])].forEach((post) => {
     if (!post?.slug) return;
     map.set(post.slug, post);
   });
   return [...map.values()].filter((post) => post.published !== false);
+}
+
+function buildPostUrl(post) {
+  const slug = encodeURIComponent(post?.slug || "");
+  if (!slug) return "/blog/";
+  return post?._source === "supabase"
+    ? `/blog/post/?slug=${slug}`
+    : `/blog/${slug}/`;
 }
 
 async function loadSupabasePosts() {
@@ -183,7 +192,7 @@ async function loadSupabasePosts() {
     }
 
     const data = await response.json();
-    return (Array.isArray(data) ? data : []).map(normalizePost);
+    return (Array.isArray(data) ? data : []).map((post) => normalizePost(post, "supabase"));
   } catch (error) {
     console.warn("Supabase posts load failed:", error);
     return [];
@@ -195,7 +204,7 @@ async function loadLocalPosts() {
     const response = await fetch("/data/posts.json");
     if (!response.ok) return [];
     const data = await response.json();
-    return (Array.isArray(data) ? data : []).map(normalizePost);
+    return (Array.isArray(data) ? data : []).map((post) => normalizePost(post, "local"));
   } catch (error) {
     console.warn("Local posts load failed:", error);
     return [];
@@ -229,7 +238,7 @@ function renderFeatured(posts) {
         <h3>${escapeHtml(featured.title)}</h3>
         <p>${escapeHtml(featured.excerpt)}</p>
         <div class="blog-hero-cta">
-          <a class="btn btn-primary" href="/blog/${encodeURIComponent(featured.slug)}/">Leer articulo destacado</a>
+          <a class="btn btn-primary" href="${buildPostUrl(featured)}">Leer articulo destacado</a>
         </div>
       </div>
       <div class="blog-featured-side">
@@ -285,7 +294,7 @@ function postCard(post) {
         <div class="blog-score-row"><span>Relevancia</span><strong>${Number(post.relevance_score || 0)}/100</strong></div>
         <div class="blog-score-row"><span>Utilidad</span><strong>${Number(post.utility_score || 0)}/100</strong></div>
       </div>
-      <a class="blog-card-link" href="/blog/${encodeURIComponent(post.slug)}/">Leer articulo -></a>
+      <a class="blog-card-link" href="${buildPostUrl(post)}">Leer articulo -></a>
     </article>
   `;
 }

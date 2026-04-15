@@ -30,9 +30,9 @@
   <div class="blog-shell">
     <nav class="blog-breadcrumb" aria-label="Breadcrumb">
       <a href="/">Inicio</a>
-      <span>›</span>
+      <span>></span>
       <a href="/blog/">Blog</a>
-      <span>›</span>
+      <span>></span>
       <span>Redes sociales</span>
     </nav>
 
@@ -54,7 +54,7 @@
 
 <footer class="blog-footer">
   <div class="blog-shell blog-footer-inner">
-    <span>© 2026 Nex Digital</span>
+    <span>&copy; 2026 Nex Digital</span>
     <div class="blog-footer-links">
       <a href="/blog/">Volver al blog</a>
       <a href="/aviso-legal/">Aviso legal</a>
@@ -67,39 +67,101 @@
 </footer>
 
 <script>
-(function(){
-  const grid = document.getElementById('socialPostsGrid');
-  const empty = document.getElementById('socialPostsEmpty');
+(function () {
+  const grid = document.getElementById("socialPostsGrid");
+  const empty = document.getElementById("socialPostsEmpty");
+  const SUPABASE_URL = "https://uksihlimqyjuavmeskth.supabase.co";
+  const SUPABASE_ANON_KEY =
+    "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InVrc2lobGltcXlqdWF2bWVza3RoIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzU5OTc5MjcsImV4cCI6MjA5MTU3MzkyN30.m7JurWW5LQog4jRehQRPWxZl8FksV3-v55mDpVhasi4";
 
-  const formatDate = (value) => new Intl.DateTimeFormat('es-ES', { day:'2-digit', month:'long', year:'numeric' }).format(new Date(value));
-  const esc = (t='') => String(t).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;').replace(/'/g,'&#39;');
+  const formatDate = (value) =>
+    new Intl.DateTimeFormat("es-ES", { day: "2-digit", month: "long", year: "numeric" }).format(new Date(value));
+  const esc = (t = "") =>
+    String(t)
+      .replace(/&/g, "&amp;")
+      .replace(/</g, "&lt;")
+      .replace(/>/g, "&gt;")
+      .replace(/"/g, "&quot;")
+      .replace(/'/g, "&#39;");
 
-  fetch('/data/posts.json')
-    .then((r)=>r.json())
-    .then((posts)=>{
-      const social = (Array.isArray(posts)?posts:[])
-        .filter((p)=>p && p.published && p.category_id === 'redes-sociales')
-        .sort((a,b)=>new Date(b.date)-new Date(a.date));
+  const normalize = (post, source) => ({
+    ...post,
+    _source: source,
+    date: post.published_at || post.date || post.created_at || null,
+    published: post.published !== false
+  });
 
-      if(!social.length){
+  const postUrl = (post, localSlugSet) =>
+    post._source === "supabase" && !localSlugSet.has(post.slug)
+      ? `/blog/post/?slug=${encodeURIComponent(post.slug)}`
+      : `/blog/${encodeURIComponent(post.slug)}/`;
+
+  async function loadSupabase() {
+    try {
+      const response = await fetch(
+        `${SUPABASE_URL}/rest/v1/posts?published=eq.true&category_id=eq.redes-sociales&select=slug,title,excerpt,category,category_id,published_at,reading_time&order=published_at.desc`,
+        {
+          headers: {
+            apikey: SUPABASE_ANON_KEY,
+            Authorization: `Bearer ${SUPABASE_ANON_KEY}`
+          }
+        }
+      );
+      if (!response.ok) return [];
+      const data = await response.json();
+      return (Array.isArray(data) ? data : []).map((post) => normalize(post, "supabase"));
+    } catch {
+      return [];
+    }
+  }
+
+  async function loadLocal() {
+    try {
+      const response = await fetch("/data/posts.json");
+      if (!response.ok) return [];
+      const data = await response.json();
+      return (Array.isArray(data) ? data : []).map((post) => normalize(post, "local"));
+    } catch {
+      return [];
+    }
+  }
+
+  Promise.all([loadSupabase(), loadLocal()])
+    .then(([supabasePosts, localPosts]) => {
+      const map = new Map();
+      [...supabasePosts, ...localPosts].forEach((post) => {
+        if (!post || !post.slug) return;
+        map.set(post.slug, post);
+      });
+
+      const localSlugSet = new Set(localPosts.map((post) => post.slug).filter(Boolean));
+      const social = [...map.values()]
+        .filter((post) => post && post.published && post.category_id === "redes-sociales")
+        .sort((a, b) => new Date(b.date) - new Date(a.date));
+
+      if (!social.length) {
         empty.hidden = false;
         return;
       }
 
-      grid.innerHTML = social.map((post)=>`
+      grid.innerHTML = social
+        .map(
+          (post) => `
         <article class="blog-card">
           <div class="blog-meta">
-            <span>${esc(post.category)}</span>
+            <span>${esc(post.category || "Redes sociales")}</span>
             <span>${formatDate(post.date)}</span>
-            <span>${esc(post.reading_time || '')}</span>
+            <span>${esc(post.reading_time || "")}</span>
           </div>
           <h3>${esc(post.title)}</h3>
-          <p>${esc(post.excerpt || '')}</p>
-          <a class="blog-card-link" href="/blog/${encodeURIComponent(post.slug)}/">Leer articulo →</a>
+          <p>${esc(post.excerpt || "")}</p>
+          <a class="blog-card-link" href="${postUrl(post, localSlugSet)}">Leer articulo -></a>
         </article>
-      `).join('');
+      `
+        )
+        .join("");
     })
-    .catch(()=>{
+    .catch(() => {
       empty.hidden = false;
     });
 })();
